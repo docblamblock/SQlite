@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.bsdmasterindex.show-hide-iframe"
+        version     = "1.0.0"
+        versionCode = "100" > <!-- versionCode is optional and Android only -->
+        <!-- Tool Set Version -->        
+        <preference name='phonegap-version' value='cli-6.5.0' />
+
+        <name>Sqlite</name>
+        <description>Phonegappro.com example file</description>
+        <author href="http://bsdmasterindex.com" email="jessemonroy650@yahoo.com">
+        Jesse Monroy
+        </author>
+
+        <!-- App requested permission -->
+        <preference name="permissions" value="none"/>
+        
+       
+        <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
+        <preference name="SplashScreen" value="splash" />
+        <preference name="SplashScreenDelay" value="5000" />
+        <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
+        <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
+        <!--
+            Define a specific version of PhoneGap to build into your app.
+            <preference name="phonegap-version"       value="3.5.0" />
+        -->
+
+
+        <!-- ANDROID * ANDROID * ANDROID -->
+        <platform name="android" >            
+        <splash src="ldpi.png" platform="android" qualifier="ldpi" />
+        </platform>
+       
+
+        <!-- PLUGINS * PLUGINS * PLUGINS -->
+        <!-- Core plugins -->
+ 
+    <plugin name="cordova-plugin-splashscreen" />
+    <plugin name="cordova-plugin-vibration" />
+    <plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova-plugin-cordova-plugin-sqlite" />
+    
+
+    
+    
+    
+     
+   
+
+
+    <!-- Third party plugins -->
+    <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
+    <!--
+        <plugin name="com.phonegap.plugins.barcodescanner" />
+    -->
+
+    <!-- Define app icon for each platform. -->
+    <icon src="www/icon.png" />
+    <icon src="www/res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
+    <icon src="www/res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
+    <icon src="www/res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:qualifier="hdpi" />
+    <icon src="www/res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="www/res/icon/blackberry/icon-80.png"     gap:platform="blackberry" />
+    <icon src="www/res/icon/blackberry/icon-80.png"     gap:platform="blackberry" gap:state="hover"/>
+    <icon src="www/res/icon/ios/icon-57.png"            gap:platform="ios"        width="57" height="57" />
+    <icon src="www/res/icon/ios/icon-72.png"            gap:platform="ios"        width="72" height="72" />
+    <icon src="www/res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
+    <icon src="www/res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
+    <icon src="www/res/icon/webos/icon-64.png"          gap:platform="webos" />
+    <icon src="www/res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
+    <icon src="www/res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
+
+    <!-- Define app splash screen for each platform. -->
+    <gap:splash src="www/res/screen/android/screen-ldpi-portrait.png"       gap:platform="android" gap:qualifier="port-ldpi" />
+    <gap:splash src="www/res/screen/android/screen-mdpi-portrait.png"       gap:platform="android" gap:qualifier="port-mdpi" />
+    <gap:splash src="www/res/screen/android/screen-hdpi-portrait.png"       gap:platform="android" gap:qualifier="port-hdpi" />
+    <gap:splash src="www/res/screen/android/screen-xhdpi-portrait.png"      gap:platform="android" gap:qualifier="port-xhdpi" />
+    <gap:splash src="www/res/screen/blackberry/screen-225.png"              gap:platform="blackberry" />
+    <gap:splash src="www/res/screen/ios/screen-iphone-portrait.png"         gap:platform="ios"     width="320" height="480" />
+    <gap:splash src="www/res/screen/ios/screen-iphone-portrait-2x.png"      gap:platform="ios"     width="640" height="960" />
+    <gap:splash src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios"     width="640" height="1136" />
+    <gap:splash src="www/res/screen/ios/screen-ipad-portrait.png"           gap:platform="ios"     width="768" height="1024" />
+    <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png"          gap:platform="ios"     width="1024" height="768" />
+    <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
+       
+       
+        
+        
+        <!-- WHITELIST * WHITELIST * WHITELIST -->
+        <!-- https://github.com/jessemonroy650/top-phonegap-mistakes/blob/master/the-whitelist-system.md -->
+        <allow-navigation href="http://cork.ie/" />
+        <allow-navigation href="http://googleapis.com/" />
+        <allow-navigation href="http://google.com/" />
+        
+        
+        <allow-navigation href="http://cordova.apache.org/" />
+        <allow-navigation href="https://slack.cordova.io" />
+        <allow-navigation href="http://www.google-analytics.com/" />
+        <allow-navigation href="https://*.imgur.com/" />
+        <allow-navigation href="https://*.twitter.com/" />
+        <allow-navigation href="https://*.twimg.com/" />
+        <allow-navigation href="http://cordovablogs.discus.com/" />
+        <!-- <allow-intent href="*" /> -->
+        
+            <access origin="*"/>
+    <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
+    <!-- Whitelist configuration. Refer to https://cordova.apache.org/docs/en/edge/guide_appdev_whitelist_index.md.html -->
+    <plugin name="cordova-plugin-whitelist" version="1" />
+  
+     <access origin="*" />
+
+   <allow-intent href="http://*/*" />
+
+   <allow-intent href="https://*/*" />
+
+   <allow-intent href="tel:*" />
+
+   <allow-intent href="sms:*" />
+
+   <allow-intent href="mailto:*" />
+
+   <allow-intent href="geo:*" />    
+        
+        
+        
+    </widget>
