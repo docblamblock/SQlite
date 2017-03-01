@@ -12,7 +12,7 @@ $("#listview").append("<p>Something</p>");
 
 
 
-/* 
+
     
 $.getJSON(url,function(result){
  console.log(result);
@@ -27,7 +27,7 @@ var title_string;
 var title_array;
 
 
- /*
+
 
 
  
@@ -43,25 +43,27 @@ var title_array;
  
 
  
- title_string += ", " + field.title;
+ //title_string += ", " + field.title;
  
  //var duration=field.duration;
  //var price=field.price;
  $("#listview").append(i+" : "+title+" (" + desc+")");
  });
+ 
+
+ 
  });
 
-var fruits = ["Banana", "Orange", "Apple", "Mango"];
+//var fruits = ["Banana", "Orange", "Apple", "Mango"];
 
-$("#titlestring").append(" " + fruits[1]);
+//$("#titlestring").append(" " + fruits[1]);
 
-//alert(JSON.stringify(result, null, 4));
+alert(JSON.stringify(result, null, 4));
  
 
 
 var myDB;
 
-   */
 
 //Open Database Connection
 document.addEventListener("deviceready",onDeviceReady,false);
