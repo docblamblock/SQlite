@@ -27,7 +27,7 @@ var title_string;
 var title_array;
 
 
-
+ /*
 
 
  
@@ -42,18 +42,6 @@ var title_array;
  var desc = field.date_added;
  
 
-   myDB.transaction(function(transaction) {
-        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
-        transaction.executeSql(executeQuery, [title,desc]
-            , function(tx, result) {
-                 alert('Inserted');
-            },
-            function(error){
-                 alert('Error occurred'); 
-            });
-    });
-     
- 
  
  title_string += ", " + field.title;
  
@@ -67,8 +55,8 @@ var fruits = ["Banana", "Orange", "Apple", "Mango"];
 
 $("#titlestring").append(" " + fruits[1]);
 
-alert(JSON.stringify(result, null, 4));
-
+//alert(JSON.stringify(result, null, 4));
+ 
 
 
 var myDB;
@@ -77,13 +65,7 @@ document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady(){
 
 
-
-
-
-
-
-
-
+     */
 
 
 
@@ -104,6 +86,10 @@ $("#createTable").click(function(){
 
 //Insert New Data
 $("#insert").click(function(){
+
+alert("insert");
+
+/*
   var title=$("#title").val();
   var desc=$("#desc").val();
   
@@ -118,6 +104,8 @@ $("#insert").click(function(){
                  alert('Error occurred'); 
             });
     });
+    
+    */
 });
 
 //Display Table Data
