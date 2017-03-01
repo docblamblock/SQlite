@@ -27,27 +27,19 @@ var title_string;
 var title_array;
 
 
-          /*
- $.each(result, function(i, field){
- //var id=field.id;
- 
- //var title_array[i] = "parp";
-
-
-
- var title      = field.title;
- var desc = field.date_added;
- 
-
- 
- //title_string += ", " + field.title;
- 
- //var duration=field.duration;
- //var price=field.price;
- $("#listview").append(i+" : "+title+" (" + desc+")");
- });
- */
- 
+              
+     $.each(result, function(i, field){
+     
+     var title      = field.title;
+     var desc = field.date_added;
+     
+    
+     
+     
+     $("#listview").append(i+" : "+title+" (" + desc+")");
+     });
+     
+     
 
  
  });
