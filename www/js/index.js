@@ -18,8 +18,8 @@ $.getJSON(url,function(result){
  console.log(result);
  
  // prints the object to screen
- str = JSON.stringify(result, null, 4);
- alert(str);
+ //str = JSON.stringify(result, null, 4);
+ //alert(str);
  
  
 
@@ -27,10 +27,7 @@ var title_string;
 var title_array;
 
 
-
-
-
- 
+          /*
  $.each(result, function(i, field){
  //var id=field.id;
  
@@ -49,6 +46,7 @@ var title_array;
  //var price=field.price;
  $("#listview").append(i+" : "+title+" (" + desc+")");
  });
+ */
  
 
  
@@ -58,7 +56,7 @@ var title_array;
 
 //$("#titlestring").append(" " + fruits[1]);
 
-alert(JSON.stringify(result, null, 4));
+//alert(JSON.stringify(result, null, 4));
  
 
 
