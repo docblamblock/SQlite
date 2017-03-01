@@ -1,9 +1,52 @@
 $(document).ready(function(){
 
+
+
+
+$("#listview").append("<p>Something</p>");
+
+
+ var url="http://www.kiosks.ie/poc_json.php";
+ 
+  
+   alert("test");
+ 
+ $.getJSON(url,function(result){
+ console.log(result);
+
+ 
+ 
+ $.each(result, function(i, field){
+ //var id=field.id;
+ 
+
+ var title=field.title;
+ //var duration=field.duration;
+ //var price=field.price;
+ $("#listview").append(i+" : "+title+", ");
+ });
+ });
+
+
+
+
+
 var myDB;
 //Open Database Connection
 document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady(){
+
+
+
+
+
+
+
+
+
+
+
+
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 }
 //Create new table
