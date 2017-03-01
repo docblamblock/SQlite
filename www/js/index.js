@@ -12,7 +12,7 @@ $("#listview").append("<p>Something</p>");
 
 
 
- 
+/* 
     
 $.getJSON(url,function(result){
  console.log(result);
@@ -60,17 +60,25 @@ $("#titlestring").append(" " + fruits[1]);
 
 
 var myDB;
+
+   */
+
 //Open Database Connection
 document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady(){
 
 
-     */
+  
 
 
 
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
 }
+
+
+
+
 //Create new table
 $("#createTable").click(function(){
     myDB.transaction(function(transaction) {
