@@ -7,27 +7,67 @@ $("#listview").append("<p>Something</p>");
 
 
  var url="http://www.kiosks.ie/poc_json.php";
- 
-  
-   alert("test");
- 
- $.getJSON(url,function(result){
- console.log(result);
+
+
+
+
 
  
+    
+$.getJSON(url,function(result){
+ console.log(result);
+ 
+ // prints the object to screen
+ str = JSON.stringify(result, null, 4);
+ alert(str);
+ 
+ 
+
+var title_string;
+var title_array;
+
+
+
+
+
  
  $.each(result, function(i, field){
  //var id=field.id;
  
+ //var title_array[i] = "parp";
 
- var title=field.title;
+
+
+ var title      = field.title;
+ var desc = field.date_added;
+ 
+
+   myDB.transaction(function(transaction) {
+        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [title,desc]
+            , function(tx, result) {
+                 alert('Inserted');
+            },
+            function(error){
+                 alert('Error occurred'); 
+            });
+    });
+     
+ 
+ 
+ title_string += ", " + field.title;
+ 
  //var duration=field.duration;
  //var price=field.price;
- $("#listview").append(i+" : "+title+", ");
+ $("#listview").append(i+" : "+title+" (" + desc+")");
  });
  });
 
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
 
+$("#titlestring").append(" " + fruits[1]);
+
+alert(JSON.stringify(result, null, 4));
 
 
 
@@ -66,6 +106,7 @@ $("#createTable").click(function(){
 $("#insert").click(function(){
   var title=$("#title").val();
   var desc=$("#desc").val();
+  
   console.log(title +""+ desc);
   myDB.transaction(function(transaction) {
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
