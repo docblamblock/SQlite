@@ -151,28 +151,37 @@ $("#insert").click(function(){
   var desc="blahdeblah"; 
     
  alert("insert:"+proc_array[1].title+" length:"+objlength);
- 
-   for (i = 0; i < objlength; i++){
+                      // objlength
+  
+   
+
+     myDB.transaction(function(transaction) {
+     
+      for (i = 0; i < 10; i++){
    
    title = proc_array[i].title;
    desc = proc_array[i].cname;
    
-   $("#titlestring").append(", "+title+" - " + desc);
-   
-     myDB.transaction(function(transaction) {
+   $("#titlestring").append("<br>("+i+") "+title+" - " + desc);
+     
+     
+     
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
         transaction.executeSql(executeQuery, [title,desc]
-            , function(tx, result) {
-                 alert('Inserted');
+            , function(tx, result2) {
+                 alert('Inserted'+title);
             },
             function(error){
                  alert('Error occurred'); 
             });
+            
+           }    
+            
     });
+      
    
    
-   
-   }
+
   
   
   
