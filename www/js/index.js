@@ -65,6 +65,8 @@ proc_array = $.map(result, function(value, index) {
 console.log(proc_array);
 
 
+alert("this element->" + proc_array[1].title );   // this works here on line 68
+
 //for (var i=0; i<objlength; i++)
 
 
@@ -85,7 +87,7 @@ console.log(proc_array);
 
 
 var myDB;
-alert("this one" + somevar);
+alert("this one" + proc_array );
 
 //Open Database Connection
 document.addEventListener("deviceready",onDeviceReady,false);
@@ -95,9 +97,9 @@ document.addEventListener("deviceready",onDeviceReady,false);
 
 function onDeviceReady(){
 
-alert("device is ready somevar="+somevar);
+alert("device is ready somevar="+somevar);     // this works
   
-
+alert("this element->" + proc_array[1].title );   // this works here on line 68
 
 
 
