@@ -1,3 +1,22 @@
+/* 
+------------------------------------------------------------
+------------------ on device ready -------------------------
+------------------------------------------------------------
+ */
+
+ document.addEventListener("deviceready",onDeviceReady,false);
+
+function onDeviceReady(){
+
+alert("device is ready. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
+                                                       // but it wont take the array proc_array because it hasnt been created
+                                                       
+
+var myDB;
+
+myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
+}
 
 
 var cars = ["Saab", "Volvo", "BMW"];
@@ -48,6 +67,7 @@ proc_array = $.map(result, function(value, index) {
 console.log(proc_array);
 
 
+
 $(document).ready(function(){
 
 
@@ -92,25 +112,6 @@ var something = "3";
 
 
 
-/* 
-------------------------------------------------------------
------------------- on device ready -------------------------
-------------------------------------------------------------
- */
-
- document.addEventListener("deviceready",onDeviceReady,false);
-
-function onDeviceReady(){
-
-alert("device is ready. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
-                                                       // but it wont take the array proc_array because it hasnt been created
-                                                       
-
-var myDB;
-
-myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
-
-}
 
 
 
@@ -230,6 +231,6 @@ $("#DropTable").click(function(){
     });
 });
 
-});
 
+ });
 
