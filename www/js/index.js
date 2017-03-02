@@ -13,7 +13,38 @@ function register(){
 $(document).ready(function(){
 
  
-var somevar = 9;
+
+  
+
+ 
+ });
+
+var something = "4"; 
+
+alert("this thing->" + something ); 
+
+//var fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+//$("#titlestring").append(" " + fruits[1]);
+
+//alert(JSON.stringify(result, null, 4));
+ 
+
+
+var myDB;
+
+
+//Open Database Connection
+document.addEventListener("deviceready",onDeviceReady,false);
+
+
+
+
+function onDeviceReady(){
+
+alert("device is ready");     // this works
+  
+
 
 
 $("#listview").append("<p>Something</p>");
@@ -22,7 +53,10 @@ $("#listview").append("<p>Something</p>");
  var url="http://www.kiosks.ie/poc_json.php";
 
 
-
+var title_string;
+var title_array;
+var objlength;
+var proc_array;
 
 
 
@@ -37,10 +71,7 @@ $.getJSON(url,function(result){
 
  
 
-var title_string;
-var title_array;
-var objlength;
-var proc_array;
+
               
      $.each(result, function(i, field){
      
@@ -53,7 +84,9 @@ var proc_array;
      $("#listview").append(i+" : "+title+" (" + desc+")");
      });
      
-      objlength = Object.keys(result).length;     // get number of elements
+
+
+objlength = Object.keys(result).length;     // get number of elements
 //alert("objlength="+objlength);
 
 
@@ -73,34 +106,6 @@ alert("this element->" + proc_array[1].title );   // this works here on line 68
 
 
 
-  
-
- 
- });
-
-//var fruits = ["Banana", "Orange", "Apple", "Mango"];
-
-//$("#titlestring").append(" " + fruits[1]);
-
-//alert(JSON.stringify(result, null, 4));
- 
-
-
-var myDB;
-alert("this one" + proc_array );
-
-//Open Database Connection
-document.addEventListener("deviceready",onDeviceReady,false);
-
-
-
-
-function onDeviceReady(){
-
-alert("device is ready somevar="+somevar);     // this works
-  
-alert("this element->" + proc_array[1].title );   // this works here on line 68
-
 
 
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
@@ -109,7 +114,7 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
 
 
 
-
+  
 
 
 
