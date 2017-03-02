@@ -139,7 +139,7 @@ function onDeviceReady() {
 
 // if connected to the internet then get db from PROC
 
-//getPROC();
+//
 
 // if no connection then tell us
 
@@ -150,6 +150,7 @@ function onDeviceReady() {
         connectionStatus = 'offline'; 
     } else {
         connectionStatus = 'online';
+        getPROC();
     }
 
 alert("done");
