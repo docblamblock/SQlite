@@ -52,6 +52,9 @@ objlength = Object.keys(result).length;     // get number of elements
 
 proc_array = $.map(result, function(value, index) {
     return [value];
+    
+document.addEventListener("deviceready",onDeviceReady,false);    
+    
 });
 
 
@@ -60,7 +63,7 @@ console.log(proc_array);
 
 alert("this element->" + proc_array[1].title );   // this works here on line 68
 
-document.addEventListener("deviceready",onDeviceReady,false);
+
  
  });
  
@@ -71,7 +74,7 @@ var something = "4";
 
 alert("this thing->" + something ); 
 
-alert("inside device ready->" + proc_array[1].title ); 
+alert("inside device ready->" + proc_array[1].title );      // is the device ready before the document is ready
 
 //alert(JSON.stringify(result, null, 4));
  
