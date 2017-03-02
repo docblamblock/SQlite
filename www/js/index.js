@@ -13,7 +13,7 @@ function register(){
 $(document).ready(function(){
 
  
-
+var somevar = 9;
 
 
 $("#listview").append("<p>Something</p>");
@@ -40,7 +40,7 @@ $.getJSON(url,function(result){
 var title_string;
 var title_array;
 var objlength;
-
+var proc_array;
               
      $.each(result, function(i, field){
      
@@ -57,7 +57,7 @@ var objlength;
 //alert("objlength="+objlength);
 
 
-var proc_array = $.map(result, function(value, index) {
+proc_array = $.map(result, function(value, index) {
     return [value];
 });
 
@@ -85,29 +85,29 @@ console.log(proc_array);
 
 
 var myDB;
-
+alert("this one" + somevar);
 
 //Open Database Connection
 document.addEventListener("deviceready",onDeviceReady,false);
+
+
+
+
 function onDeviceReady(){
 
-alert("device is ready");
+alert("device is ready somevar="+somevar);
   
-       for (var i=0; i<3; i++)
-    //for (var name in array[i]) 
-    {
-        console.log("Item name: "+proc_array[i].title);
-        
-        //console.log("Value: "+result[i].);
-        //console.log("Target: "+result[i][name].targetUuid);
-    }
-    
-alert("this one" + proc_array[1].title)
+
+
 
 
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 }
+
+
+
+
 
 
 
