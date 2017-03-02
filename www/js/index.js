@@ -148,7 +148,7 @@ $("#insert").click(function(){
  
  
  var title=proc_array[1].title;
-  var desc="some description"; 
+  var desc="blahdeblah"; 
     
  alert("insert:"+title);
  
@@ -157,7 +157,7 @@ $("#insert").click(function(){
   
   console.log(title +""+ desc);
   
-  /*
+ 
   myDB.transaction(function(transaction) {
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
         transaction.executeSql(executeQuery, [title,desc]
@@ -168,7 +168,7 @@ $("#insert").click(function(){
                  alert('Error occurred'); 
             });
     });
-       */
+   
 
  
 });
