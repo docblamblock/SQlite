@@ -147,18 +147,19 @@ var something = "sumit";
 $("#insert").click(function(){
  
  
- var title=proc_array[1].title;
+ //var title=proc_array[1].title;
   var desc="blahdeblah"; 
     
- alert("insert:"+title);
+ alert("insert:"+proc_array[1].title+" length:"+objlength);
  
- 
-  
-  
-  console.log(title +""+ desc);
-  
- 
-  myDB.transaction(function(transaction) {
+   for (i = 0; i < objlength; i++){
+   
+   title = proc_array[i].title;
+   desc = proc_array[i].cname;
+   
+   $("#titlestring").append(", "+title+" - " + desc);
+   
+     myDB.transaction(function(transaction) {
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
         transaction.executeSql(executeQuery, [title,desc]
             , function(tx, result) {
@@ -168,6 +169,16 @@ $("#insert").click(function(){
                  alert('Error occurred'); 
             });
     });
+   
+   
+   
+   }
+  
+  
+  
+  
+ 
+
    
 
  
