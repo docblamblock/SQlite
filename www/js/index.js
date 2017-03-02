@@ -1,22 +1,3 @@
-/* 
-------------------------------------------------------------
------------------- on device ready -------------------------
-------------------------------------------------------------
- */
-
- document.addEventListener("deviceready",onDeviceReady,false);
-
-function onDeviceReady(){
-
-alert("device is ready. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
-                                                       // but it wont take the array proc_array because it hasnt been created
-                                                       
-
-var myDB;
-
-myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
-
-}
 
 
 var cars = ["Saab", "Volvo", "BMW"];
@@ -68,21 +49,18 @@ console.log(proc_array);
 
 
 
+/* 
+------------------------------------------------------------
+------------------ on document ready -------------------------
+------------------------------------------------------------
+ */
+
+
 $(document).ready(function(){
 
-
-
-
-    
-
-
-
-alert("this element->" + proc_array[1].title );   // this works here on line 68
-
-
-
+//alert("document ready->" + proc_array[1].title );   // this works here on line 68
  
- });
+
  
  
  
@@ -112,6 +90,28 @@ var something = "3";
 
 
 
+/* 
+------------------------------------------------------------
+------------------ on device ready -------------------------
+------------------------------------------------------------
+ */
+
+
+
+
+var myDB;
+
+
+//Open Database Connection
+document.addEventListener("deviceready",onDeviceReady,false);
+function onDeviceReady(){
+
+ alert("inside deviceReady. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
+                                                       // but it wont take the array proc_array because it hasnt been created
+ 
+myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
+}
 
 
 
@@ -139,7 +139,7 @@ $("#createTable").click(function(){
 
 
 
-//-------------------------
+//insert new data
 
 var something = "sumit";
 
@@ -174,8 +174,6 @@ $("#insert").click(function(){
 });
       
 
-// /end of insert
-//-------------------------
 
 
 //Display Table Data
@@ -232,5 +230,6 @@ $("#DropTable").click(function(){
 });
 
 
- });
+ });    // end of document.ready
 
+          });    // end of GET.JSON
