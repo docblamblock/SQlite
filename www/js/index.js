@@ -71,6 +71,8 @@ var something = "4";
 
 alert("this thing->" + something ); 
 
+alert("inside device ready->" + proc_array[1].title ); 
+
 //alert(JSON.stringify(result, null, 4));
  
 
