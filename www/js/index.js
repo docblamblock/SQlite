@@ -70,14 +70,6 @@ console.log(proc_array);
 
 
 
-  for (var i=0; i<3; i++)
-    //for (var name in array[i]) 
-    {
-        console.log("Item name: "+proc_array[i].title);
-        
-        //console.log("Value: "+result[i].);
-        //console.log("Target: "+result[i][name].targetUuid);
-    }
 
   
 
@@ -99,9 +91,18 @@ var myDB;
 document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady(){
 
-
+alert("device is ready");
   
-
+       for (var i=0; i<3; i++)
+    //for (var name in array[i]) 
+    {
+        console.log("Item name: "+proc_array[i].title);
+        
+        //console.log("Value: "+result[i].);
+        //console.log("Target: "+result[i][name].targetUuid);
+    }
+    
+alert("this one" + proc_array[1].title)
 
 
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
