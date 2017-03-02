@@ -14,38 +14,6 @@ $(document).ready(function(){
 
  
 
-  
-
- 
- });
-
-var something = "4"; 
-
-alert("this thing->" + something ); 
-
-//var fruits = ["Banana", "Orange", "Apple", "Mango"];
-
-//$("#titlestring").append(" " + fruits[1]);
-
-//alert(JSON.stringify(result, null, 4));
- 
-
-
-var myDB;
-
-
-//Open Database Connection
-document.addEventListener("deviceready",onDeviceReady,false);
-
-
-
-
-function onDeviceReady(){
-
-alert("device is ready");     // this works
-  
-
-
 
 $("#listview").append("<p>Something</p>");
 
@@ -64,15 +32,7 @@ var proc_array;
 $.getJSON(url,function(result){
  console.log(result);
  
- // prints the object to screen
- //str = JSON.stringify(result, null, 4);
- //alert(str);
- 
-
- 
-
-
-              
+             
      $.each(result, function(i, field){
      
      var title      = field.title;
@@ -100,10 +60,33 @@ console.log(proc_array);
 
 alert("this element->" + proc_array[1].title );   // this works here on line 68
 
-//for (var i=0; i<objlength; i++)
+ 
+ });
+ 
+ 
+ 
+
+var something = "4"; 
+
+alert("this thing->" + something ); 
+
+//alert(JSON.stringify(result, null, 4));
+ 
 
 
+var myDB;
 
+
+//Open Database Connection
+document.addEventListener("deviceready",onDeviceReady,false);
+
+
+var something = "3";
+
+function onDeviceReady(){
+
+alert("device is ready. something = " +something);     // this works
+  
 
 
 
