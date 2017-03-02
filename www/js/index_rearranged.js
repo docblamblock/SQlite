@@ -152,8 +152,9 @@ function onDeviceReady() {
         connectionStatus = 'online';
     }
 
+alert("done");
 
-alert("networkOn="+networkOn);
+alert("networkOn="+connectionStatus);
 
 
 
