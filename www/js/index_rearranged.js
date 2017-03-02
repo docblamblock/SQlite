@@ -133,7 +133,7 @@ function onDeviceReady() {
 
 // if connected to the internet then get db from PROC
 
-getPROC();
+//getPROC();
 
 // if no connection then tell us
 checkConnection(); 
