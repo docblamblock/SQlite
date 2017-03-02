@@ -81,10 +81,10 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
 
 function checkConnection() {
     
-    alert("checking connection");
+    
     var networkState = navigator.connection.type;
 
-    alert("checking connection 2");
+   
 
     var states = {};
     states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -97,6 +97,12 @@ function checkConnection() {
     states[Connection.NONE]     = 'No network connection';
 
     alert('Connection type: ' + states[networkState]);
+    
+    // if we are connected then 
+    
+    return networkState;
+    
+    
 }
 
 
@@ -136,13 +142,20 @@ function onDeviceReady() {
 //getPROC();
 
 // if no connection then tell us
-checkConnection(); 
+
+
+
+
+    if (checkConnection() == "none" ) {
+        connectionStatus = 'offline'; 
+    } else {
+        connectionStatus = 'online';
+    }
+
+
+alert("networkOn="+networkOn);
 
 
 
 }
-
-
-
-
   
