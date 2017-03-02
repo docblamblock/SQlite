@@ -1,5 +1,18 @@
+
+
+function register(){
+    // caution: drop the "new Array" part or it won't work!
+    var ids = ['name','lname','email','password','cpassword'];
+    var printThis = "";
+    for(var i = 0; i < ids.length; i++){
+        printThis += "<br>"+ids[i];
+    }
+    return printThis; // <-- to be printed to the div
+}
+
 $(document).ready(function(){
 
+ 
 
 
 
@@ -21,11 +34,12 @@ $.getJSON(url,function(result){
  //str = JSON.stringify(result, null, 4);
  //alert(str);
  
+
  
 
 var title_string;
 var title_array;
-
+var objlength;
 
               
      $.each(result, function(i, field){
@@ -39,7 +53,33 @@ var title_array;
      $("#listview").append(i+" : "+title+" (" + desc+")");
      });
      
-     
+      objlength = Object.keys(result).length;     // get number of elements
+//alert("objlength="+objlength);
+
+
+var proc_array = $.map(result, function(value, index) {
+    return [value];
+});
+
+
+console.log(proc_array);
+
+
+//for (var i=0; i<objlength; i++)
+
+
+
+
+  for (var i=0; i<3; i++)
+    //for (var name in array[i]) 
+    {
+        console.log("Item name: "+proc_array[i].title);
+        
+        //console.log("Value: "+result[i].);
+        //console.log("Target: "+result[i][name].targetUuid);
+    }
+
+  
 
  
  });
@@ -86,12 +126,12 @@ $("#createTable").click(function(){
 
 //Insert New Data
 $("#insert").click(function(){
+  
+    
 
-alert("insert");
 
-/*
-  var title=$("#title").val();
-  var desc=$("#desc").val();
+  var title="this title";
+  var desc="some description";
   
   console.log(title +""+ desc);
   myDB.transaction(function(transaction) {
@@ -104,8 +144,7 @@ alert("insert");
                  alert('Error occurred'); 
             });
     });
-    
-    */
+ 
 });
 
 //Display Table Data
