@@ -1,11 +1,11 @@
 
 
 // 1. put JSON call in a function of its own and call it when document is loaded or when device has loaded - DONE
-// 2. 
+// 2. check if we are online or offline 
 
 
 
-$("#listview").append("<p>Something</p>");
+//$("#listview").append("<p>Something</p>");
 
 
 
@@ -100,10 +100,35 @@ $(document).ready(function() {
 
 
 function onDeviceReady() {
-    alert("Device is Ready");     // this works. you can take a variable from just above this and display it above.
-                                                       // but it wont take the array proc_array because it hasnt been created
+    alert("Device is Ready");    
+
+
+// if connected to the internet then get db from PROC
+
 getPROC();
+
+// if no connection then tell us
+checkConnection(); 
+
+
+
 }
 
 
-   
+function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
+
+  
