@@ -60,6 +60,7 @@ console.log(proc_array);
 
 alert("this element->" + proc_array[1].title );   // this works here on line 68
 
+document.addEventListener("deviceready",onDeviceReady,false);
  
  });
  
@@ -78,16 +79,16 @@ var myDB;
 
 
 //Open Database Connection
-document.addEventListener("deviceready",onDeviceReady,false);
+
 
 
 var something = "3";
 
 function onDeviceReady(){
 
-alert("device is ready. something = " +something);     // this works
-  
-
+alert("device is ready. something = " +something);     // this works. you can take a variable from just above this and display it above.
+                                                       // but it wont take the array proc_array because it hasnt been created
+                                                       
 
 
 
