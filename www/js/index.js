@@ -1,18 +1,8 @@
 
 
-function register(){
-    // caution: drop the "new Array" part or it won't work!
-    var ids = ['name','lname','email','password','cpassword'];
-    var printThis = "";
-    for(var i = 0; i < ids.length; i++){
-        printThis += "<br>"+ids[i];
-    }
-    return printThis; // <-- to be printed to the div
-}
+var cars = ["Saab", "Volvo", "BMW"];
 
-$(document).ready(function(){
 
- 
 
 
 $("#listview").append("<p>Something</p>");
@@ -52,16 +42,23 @@ objlength = Object.keys(result).length;     // get number of elements
 
 proc_array = $.map(result, function(value, index) {
     return [value];
-    
-document.addEventListener("deviceready",onDeviceReady,false);    
-    
-});
+            });
 
 
 console.log(proc_array);
 
 
+$(document).ready(function(){
+
+
+
+
+    
+
+
+
 alert("this element->" + proc_array[1].title );   // this works here on line 68
+
 
 
  
@@ -74,28 +71,42 @@ var something = "4";
 
 alert("this thing->" + something ); 
 
-alert("inside device ready->" + proc_array[1].title );      // is the device ready before the document is ready
+//alert("inside device ready->" + proc_array[1].title );      // is the device ready before the document is ready??
 
 //alert(JSON.stringify(result, null, 4));
  
 
 
-var myDB;
 
 
+alert("Outside all functions: cars-0"+proc_array[2].title);
 //Open Database Connection
 
 
 
 var something = "3";
 
+
+
+
+
+
+
+/* 
+------------------------------------------------------------
+------------------ on device ready -------------------------
+------------------------------------------------------------
+ */
+
+ document.addEventListener("deviceready",onDeviceReady,false);
+
 function onDeviceReady(){
 
-alert("device is ready. something = " +something);     // this works. you can take a variable from just above this and display it above.
+alert("device is ready. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
                                                        // but it wont take the array proc_array because it hasnt been created
                                                        
 
-
+var myDB;
 
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
@@ -103,7 +114,11 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
 
 
 
-  
+/* 
+-------------------------------------------------------------------
+----------------- / end of device ready ---------------------------
+-------------------------------------------------------------------
+ */  
 
 
 
@@ -121,16 +136,27 @@ $("#createTable").click(function(){
     });
 });
 
+
+
+//-------------------------
+
+var something = "sumit";
+
 //Insert New Data
 $("#insert").click(function(){
-  
+ 
+ 
+ var title=proc_array[1].title;
+  var desc="some description"; 
     
-
-
-  var title="this title";
-  var desc="some description";
+ alert("insert:"+title);
+ 
+ 
+  
   
   console.log(title +""+ desc);
+  
+  /*
   myDB.transaction(function(transaction) {
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
         transaction.executeSql(executeQuery, [title,desc]
@@ -141,8 +167,15 @@ $("#insert").click(function(){
                  alert('Error occurred'); 
             });
     });
+       */
+
  
 });
+      
+
+// /end of insert
+//-------------------------
+
 
 //Display Table Data
 $("#showTable").click(function(){
