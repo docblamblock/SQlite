@@ -162,31 +162,75 @@ alert("networkOn="+connectionStatus);
 
 
 
-}
+
+    
 
 
 
 
 
 
-//Create new table
-$("#createTable").click(function(){
-
-
-myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 
 
-  alert("creating table");
+}  // end of onDeviceReady
 
-    myDB.transaction(function(transaction) {
-    transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
-        function(tx, result) {
-            alert("Table created successfully");
-        }, 
-        function(error) {
-              alert("Error occurred while creating the table.");
-        });
-    });
-});
+
+
+
+
+  // --------------------------------
+      //Create new table
+      
+      $("#createTable").click(function(){
+      
+       alert("creating table");
+      
+      myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
+      
+      
+       
+      
+          myDB.transaction(function(transaction) {
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+              function(tx, result) {
+                  alert("Table created successfully");
+              }, 
+              function(error) {
+                    alert("Error occurred while creating the table.");
+              });
+          });
+      });
+      // --------------------------------
+
+
+
+
+
+      // --------------------------------
+      //Create new table
+            
+      
+      
+      
+            $("#DropTable").click(function(){
+      
+       alert("Dropping table");
+      
+      myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+      
+          myDB.transaction(function(transaction) {
+              var executeQuery = "DROP TABLE  IF EXISTS phonegap_pro";
+              transaction.executeSql(executeQuery, [],
+                  function(tx, result) {alert('Table deleted successfully.');},
+                  function(error){alert('Error occurred while droping the table.');}
+              );
+            });
+          });
+      
+      // --------------------------------
+
+
+
   
