@@ -17,9 +17,10 @@ function nothing()
     
 demoP = document.getElementById("demo");
 
+var count; 
+count = 0;
 
-
-   function myFunction(item, index) {
+   function saveToDb(item, index) {
     
     demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.title + "<br>";
     
@@ -36,10 +37,10 @@ demoP = document.getElementById("demo");
         
         transaction.executeSql(executeQuery, [sqltitle,sqldesc]
             , function(tx, result) {
-                 alert('Inserted: '+sqltitle);
+                 count +=1;//alert('Inserted: '+sqltitle);
             },
             function(error){
-                 alert('Error occurred: '+sqltitle); 
+                 //alert('Error occurred: '+sqltitle); 
             });
             
            
@@ -48,7 +49,7 @@ demoP = document.getElementById("demo");
          
        
     
-    
+     alert('Rows: inserted: '+count);
     
     
     
@@ -91,7 +92,7 @@ $.getJSON(url,function(resulty){
     
      
      
-     $("#listview").append(i+" : "+title+" (" + desc+")");
+     //$("#listview").append(i+" : "+title+" (" + desc+")");
      });
      
 
@@ -108,41 +109,8 @@ proc_array = $.map(resulty, function(value, index) {
 console.log(proc_array);
 
 
-  for (i = 0; i < 3; i++){
-   
-   title = proc_array[i].title;
-   desc = proc_array[i].cname;
-      
-        /*
-        myDB.transaction(function(transaction) {
-     
-        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
-        
-        transaction.executeSql(executeQuery, [title,desc]
-            , function(tx, result) {
-                 alert('Inserted: '+title);
-            },
-            function(error){
-                 alert('Error occurred: '+title); 
-            });
-            
-           
-            
-                               });   // end of myDB.transaction
-             */
-
-
-alert("title: " + proc_array[i].title + " array length = " + objlength);
-
-           } // end of loop
-
-
-var numbers = [4, 9, 16, 25];
-
-alert("in func: proc");
-
-proc_array.forEach(myFunction);
-
+proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
+                                   // i.e. if there are 10 objects then saveToDb is called 10 times.  
 
 
 
@@ -151,16 +119,9 @@ proc_array.forEach(myFunction);
  
 
 
-
-//var jsonResponse = JSON.parse(req.responseText);
-
-//console.log(jsonResponse);
-
-//alert("getPROC says "+desc[1]);
- 
-// Q: can I do an db insert here? 
+// Q: can I do a db insert here? 
 // A: No, it has to be inside the JSON function for some reason.....
-// because the code executes before the JSON response is in (FFS!)
+// because the code executes before the JSON response is finished (FFS! - asyncronise bs!)
 
 
 
