@@ -132,6 +132,39 @@ $(document).ready(function() {
     } else {
         onDeviceReady();
     }
+    
+    
+
+
+  // --------------------------------
+      //Create new table
+      
+      $("#createTable").click(function(){
+      
+       alert("creating table");
+       myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
+      
+          myDB.transaction(function(transaction) {
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+              function(tx, result) {
+                  alert("Table created successfully");
+              }, 
+              function(error) {
+                    alert("Error occurred while creating the table.");
+              });
+          });
+      });
+      // --------------------------------
+    
+    
+    
+    
+    
+    
+    
+    
+    
 });
 
 
@@ -168,29 +201,7 @@ alert("networkOn="+connectionStatus);
 
 
 
- myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
-
-
-  // --------------------------------
-      //Create new table
-      
-      $("#createTable").click(function(){
-      
-       alert("creating table");
-      
-      
-          myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
-              function(tx, result) {
-                  alert("Table created successfully");
-              }, 
-              function(error) {
-                    alert("Error occurred while creating the table.");
-              });
-          });
-      });
-      // --------------------------------
-
+ 
 
 
 
