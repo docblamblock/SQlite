@@ -17,8 +17,6 @@ function nothing()
     
 demoP = document.getElementById("demo");
 
-var count; 
-count = 0;
 
    function saveToDb(item, index) {
     
@@ -49,7 +47,7 @@ count = 0;
          
        
     
-     alert('Rows: inserted: '+count);
+     //alert('Rows: inserted: '+count);
     
     
     
