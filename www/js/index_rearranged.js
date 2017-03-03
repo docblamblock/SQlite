@@ -10,6 +10,12 @@
 
 var myDB;
 
+var title_string;
+var title_array;
+var objlength;
+var proc_array =[];
+var resulty=[];
+
 
 
 
@@ -20,10 +26,7 @@ function getPROC ()
  var url="http://www.kiosks.ie/poc_json.php";
 
 
-var title_string;
-var title_array;
-var objlength;
-var proc_array;
+
 
     
 $.getJSON(url,function(resulty){
@@ -54,27 +57,47 @@ proc_array = $.map(resulty, function(value, index) {
 
 console.log(proc_array);
 
+
+
+     var title = 'monkey';
+      var desc = 'see';
+      
+        myDB.transaction(function(transaction) {
+     
+        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [title,desc]
+            , function(tx, result) {
+                 alert('Inserted: '+title);
+            },
+            function(error){
+                 alert('Error occurred: '+title); 
+            });
+            
+           
+            
+    });   // end of myDB.transaction
+       
+
+
+
+
+
  });    // end of GET.JSON
  
- 
-// can I do an db insert here? 
- 
- 
- 
-/* 
-document.addEventListener("deviceready",onDeviceReady,false);
-function onDeviceReady(){
 
- alert("inside deviceReady. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
-                                                       // but it wont take the array proc_array because it hasnt been created
- 
 
-} 
-*/ 
+
+//var jsonResponse = JSON.parse(req.responseText);
+
+//console.log(jsonResponse);
+
+//alert("getPROC says "+desc[1]);
  
- 
- 
- 
+// Q: can I do an db insert here? 
+// A: No, it has to be inside the JSON function for some reason.....
+// because the code executes before the JSON response is in (FFS!)
+
+
 
 } // end of PROC function 
 
@@ -136,6 +159,14 @@ $(document).ready(function() {
         onDeviceReady();
     }
     
+
+
+   
+      
+  
+   
+
+
     
 
 
@@ -255,8 +286,7 @@ $(document).ready(function() {
     
     
     
-    
-    
+ getPROC();
     
 });      // end of doc ready
 
@@ -288,10 +318,20 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
         connectionStatus = 'offline'; 
     } else {
         connectionStatus = 'online';
-        getPROC();
+        
+        /*
+        getPROC().then(function(returndata){
+   alert("JSON ready");
+  
+  //received data!
+          });
+    
+        */
+        
+        
     }
 
-alert("done");
+
 
 alert("networkOn="+connectionStatus);
 
