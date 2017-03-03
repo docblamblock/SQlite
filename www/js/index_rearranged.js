@@ -20,6 +20,7 @@ var numbers = [4, 9, 16, 25];
     var title = "myTitle";
     var desc = "myDesc";
     
+   
            myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -31,8 +32,8 @@ var numbers = [4, 9, 16, 25];
             function(error){
                  alert('Error occurred: '+title); 
             });
-            
-    
+         
+         }
     
     
     
