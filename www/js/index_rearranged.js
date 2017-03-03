@@ -269,17 +269,7 @@ $(document).ready(function() {
                       // objlength
   
    
-   /*
-   for (i = 0; i < 10; i++){
-   
-   title = proc_array[i].title;
-   desc = proc_array[i].cname;
-   
-   $("#titlestring").append("<br>("+i+") "+title+" - " + desc);
-     
 
-
-     /*
      myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -294,12 +284,11 @@ $(document).ready(function() {
            
             
     });   // end of myDB.transaction
-        */
+     
         
         
         
-        
-            //}    // end of loop
+  
             
  
  
