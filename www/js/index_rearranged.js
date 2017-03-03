@@ -286,7 +286,7 @@ $(document).ready(function() {
     
     
     
- getPROC();
+ //getPROC();
     
 });      // end of doc ready
 
@@ -319,21 +319,15 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
     } else {
         connectionStatus = 'online';
         
-        /*
-        getPROC().then(function(returndata){
-   alert("JSON ready");
-  
-  //received data!
-          });
-    
-        */
+        alert("going to getPROC now");
+
+        getPROC();
         
         
     }
 
 
 
-alert("networkOn="+connectionStatus);
 
 
 
