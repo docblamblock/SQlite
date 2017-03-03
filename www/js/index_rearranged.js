@@ -3,11 +3,45 @@
 // 1. put JSON call in a function of its own and call it when document is loaded or when device has loaded - DONE
 // 2. check if we are online or offline 
 
- $.ajaxSetup({
-   async: false
- });
+
 
 //$("#listview").append("<p>Something</p>");
+
+
+    
+demoP = document.getElementById("demo");
+var numbers = [4, 9, 16, 25];
+
+
+   function myFunction(item, index) {
+    
+    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>";
+    
+    var title = "myTitle";
+    var desc = "myDesc";
+    
+           myDB.transaction(function(transaction) {
+     
+        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
+        
+        transaction.executeSql(executeQuery, [title,desc]
+            , function(tx, result) {
+                 alert('Inserted: '+title);
+            },
+            function(error){
+                 alert('Error occurred: '+title); 
+            });
+            
+    
+    
+    
+    
+    
+    
+    
+     
+}  
+ 
 
 
 var myDB;
@@ -69,6 +103,7 @@ console.log(proc_array);
         myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
+        
         transaction.executeSql(executeQuery, [title,desc]
             , function(tx, result) {
                  alert('Inserted: '+title);
@@ -166,9 +201,8 @@ $(document).ready(function() {
     
 
 
-   
-      
-  
+
+ 
    
 
 
