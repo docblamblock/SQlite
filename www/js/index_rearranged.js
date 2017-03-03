@@ -35,7 +35,7 @@ demoP = document.getElementById("demo");
         
         transaction.executeSql(executeQuery, [sqltitle,sqldesc]
             , function(tx, result) {
-                 count +=1;//alert('Inserted: '+sqltitle);
+                 //count +=1;//alert('Inserted: '+sqltitle);
             },
             function(error){
                  //alert('Error occurred: '+sqltitle); 
