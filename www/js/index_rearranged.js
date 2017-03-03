@@ -163,17 +163,34 @@ alert("networkOn="+connectionStatus);
 
 
 
-      // --------------------------------
+    
+
+
+
+
+
+
+
+
+
+}  // end of onDeviceReady
+
+
+
+
+
+  // --------------------------------
       //Create new table
       
       $("#createTable").click(function(){
       
+       alert("creating table");
       
       myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
       
       
-        alert("creating table");
+       
       
           myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
@@ -191,38 +208,5 @@ alert("networkOn="+connectionStatus);
 
 
 
-      // --------------------------------
-      //Create new table
-            
       
-            $("#DropTable").click(function(){
-          myDB.transaction(function(transaction) {
-              var executeQuery = "DROP TABLE  IF EXISTS phonegap_pro";
-              transaction.executeSql(executeQuery, [],
-                  function(tx, result) {alert('Table deleted successfully.');},
-                  function(error){alert('Error occurred while droping the table.');}
-              );
-            });
-          });
-      
-      // --------------------------------
-
-
-
-
-
-
-
-
-
-
-
-}  // end of onDeviceReady
-
-
-
-
-
-
-
   
