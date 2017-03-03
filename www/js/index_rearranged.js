@@ -168,15 +168,7 @@ alert("networkOn="+connectionStatus);
 
 
 
-
-
-
-
-
-}  // end of onDeviceReady
-
-
-
+ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 
   // --------------------------------
@@ -186,11 +178,6 @@ alert("networkOn="+connectionStatus);
       
        alert("creating table");
       
-      myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
-
-      
-      
-       
       
           myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
@@ -203,6 +190,19 @@ alert("networkOn="+connectionStatus);
           });
       });
       // --------------------------------
+
+
+
+
+
+
+
+
+
+}  // end of onDeviceReady
+
+
+
 
 
 
