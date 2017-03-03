@@ -3,7 +3,9 @@
 // 1. put JSON call in a function of its own and call it when document is loaded or when device has loaded - DONE
 // 2. check if we are online or offline 
 
-
+ $.ajaxSetup({
+   async: false
+ });
 
 //$("#listview").append("<p>Something</p>");
 
