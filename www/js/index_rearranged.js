@@ -62,11 +62,15 @@ console.log(proc_array);
  
  
  
- 
- 
- 
+document.addEventListener("deviceready",onDeviceReady,false);
+function onDeviceReady(){
+
+ alert("inside deviceReady. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
+                                                       // but it wont take the array proc_array because it hasnt been created
  
 
+} 
+ 
  
  
  
@@ -304,7 +308,7 @@ alert("networkOn="+connectionStatus);
 function test(i)
 
   {
-  var somearray = {"blah", "weird", "pop"};
+  
   i=i+5;
   alert("test func i="+i)
   return i;  
