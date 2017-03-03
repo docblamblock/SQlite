@@ -58,10 +58,12 @@ proc_array = $.map(resulty, function(value, index) {
 console.log(proc_array);
 
 
-
-     var title = 'monkey';
-      var desc = 'see';
+  for (i = 0; i < 3; i++){
+   
+   title = proc_array[i].title;
+   desc = proc_array[i].cname;
       
+    
         myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -75,12 +77,13 @@ console.log(proc_array);
             
            
             
-    });   // end of myDB.transaction
-       
+                               });   // end of myDB.transaction
+         
 
 
+alert("title: " + proc_array[i].title + " array length = " + objlength);
 
-
+           } // end of loop
 
  });    // end of GET.JSON
  
@@ -285,7 +288,7 @@ $(document).ready(function() {
     
     
     
-    
+ // use this for debugging on computer. delete before compiling!   
  //getPROC();
     
 });      // end of doc ready
