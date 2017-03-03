@@ -10,21 +10,6 @@
 
 var myDB;
 
-//Create new table
-$("#createTable").click(function(){
-
-  alert("creating table");
-
-    myDB.transaction(function(transaction) {
-    transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
-        function(tx, result) {
-            alert("Table created successfully");
-        }, 
-        function(error) {
-              alert("Error occurred while creating the table.");
-        });
-    });
-});
 
 
 
@@ -80,7 +65,6 @@ function onDeviceReady(){
  alert("inside deviceReady. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
                                                        // but it wont take the array proc_array because it hasnt been created
  
-myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 } 
  
@@ -179,4 +163,30 @@ alert("networkOn="+connectionStatus);
 
 
 }
+
+
+
+
+
+
+//Create new table
+$("#createTable").click(function(){
+
+
+myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
+
+
+  alert("creating table");
+
+    myDB.transaction(function(transaction) {
+    transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+        function(tx, result) {
+            alert("Table created successfully");
+        }, 
+        function(error) {
+              alert("Error occurred while creating the table.");
+        });
+    });
+});
   
