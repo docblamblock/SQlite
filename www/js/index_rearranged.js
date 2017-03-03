@@ -28,7 +28,7 @@ demoP = document.getElementById("demo");
     var sqltitle = item.venue;
     var sqldesc = item.address;
     
-       /*
+    
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -45,7 +45,7 @@ demoP = document.getElementById("demo");
             
                                });   // end of myDB.transaction
          
-                         */
+                     
     
      //alert('Rows: inserted: '+count);
     
