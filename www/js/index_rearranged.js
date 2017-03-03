@@ -161,7 +161,6 @@ alert("done");
 alert("networkOn="+connectionStatus);
 
 
-myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 
       // --------------------------------
@@ -170,7 +169,8 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
       $("#createTable").click(function(){
       
       
-      
+      myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
       
       
         alert("creating table");
