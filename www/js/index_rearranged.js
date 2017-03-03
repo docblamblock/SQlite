@@ -142,8 +142,7 @@ $(document).ready(function() {
       $("#createTable").click(function(){
       
        alert("creating table");
-       myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
-
+      
       
           myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
@@ -171,6 +170,10 @@ $(document).ready(function() {
 
 function onDeviceReady() {
     alert("Device is Ready");    
+
+
+
+myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 
 // if connected to the internet then get db from PROC
