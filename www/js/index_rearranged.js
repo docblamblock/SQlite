@@ -8,35 +8,45 @@
 //$("#listview").append("<p>Something</p>");
 
 
+function nothing()
+
+{
+
+}
+
     
 demoP = document.getElementById("demo");
-var numbers = [4, 9, 16, 25];
+
 
 
    function myFunction(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>";
+    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.title + "<br>";
     
-    var title = "myTitle";
-    var desc = "myDesc";
+    //alert("index:"+index+" item:"+item.title);
     
+    
+    var sqltitle = item.title;
+    var sqldesc = item.data_added;
+    
+   
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
         
-        transaction.executeSql(executeQuery, [title,desc]
+        transaction.executeSql(executeQuery, [sqltitle,sqldesc]
             , function(tx, result) {
-                 alert('Inserted: '+title);
+                 alert('Inserted: '+sqltitle);
             },
             function(error){
-                 alert('Error occurred: '+title); 
+                 alert('Error occurred: '+sqltitle); 
             });
             
            
             
                                });   // end of myDB.transaction
          
-
+       
     
     
     
@@ -103,7 +113,7 @@ console.log(proc_array);
    title = proc_array[i].title;
    desc = proc_array[i].cname;
       
-    
+        /*
         myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -119,12 +129,23 @@ console.log(proc_array);
            
             
                                });   // end of myDB.transaction
-         
+             */
 
 
 alert("title: " + proc_array[i].title + " array length = " + objlength);
 
            } // end of loop
+
+
+var numbers = [4, 9, 16, 25];
+
+alert("in func: proc");
+
+proc_array.forEach(myFunction);
+
+
+
+
 
  });    // end of GET.JSON
  
