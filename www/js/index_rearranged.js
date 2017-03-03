@@ -20,15 +20,15 @@ demoP = document.getElementById("demo");
 
    function saveToDb(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.title + "<br>";
+    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.venue + "<br>";
     
     //alert("index:"+index+" item:"+item.title);
     
     
-    var sqltitle = item.title;
-    var sqldesc = item.data_added;
+    var sqltitle = item.venue;
+    var sqldesc = item.address;
     
-   
+       /*
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -45,7 +45,7 @@ demoP = document.getElementById("demo");
             
                                });   // end of myDB.transaction
          
-       
+                         */
     
      //alert('Rows: inserted: '+count);
     
@@ -72,7 +72,10 @@ function getPROC ()
 
 { 
 
- var url="http://www.kiosks.ie/poc_json.php";
+ // var url="http://www.kiosks.ie/poc_json.php";
+ 
+ 
+ var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php";
 
 
 
@@ -84,13 +87,13 @@ $.getJSON(url,function(resulty){
              
      $.each(resulty, function(i, field){
      
-     var title      = field.title;
-     var desc = field.date_added;
+     var title      = field.venue;
+     var desc = field.address;
      
     
      
      
-     //$("#listview").append(i+" : "+title+" (" + desc+")");
+     $("#listview").append(i+" : "+title+" (" + desc+")");
      });
      
 
