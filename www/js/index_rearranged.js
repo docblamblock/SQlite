@@ -61,7 +61,7 @@ console.log(proc_array);
  
  
  
- 
+/* 
 document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady(){
 
@@ -70,7 +70,7 @@ function onDeviceReady(){
  
 
 } 
- 
+*/ 
  
  
  
@@ -207,9 +207,9 @@ $(document).ready(function() {
   
   var somevar;
   
-  somevar = test(8);
+  somearray = test(8);
   
-  alert("Insert function" + somevar);
+  alert("Insert function" + somearray[1]);
     
  //alert("insert:"+proc_array[1].title+" length:"+objlength);
                       // objlength
@@ -308,10 +308,11 @@ alert("networkOn="+connectionStatus);
 function test(i)
 
   {
+  var somearray = ['Apple', 'Banana'];
   
   i=i+5;
   alert("test func i="+i)
-  return i;  
+  return somearray;  
   }
 
 
