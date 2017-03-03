@@ -154,11 +154,34 @@ $(document).ready(function() {
               });
           });
       });
+      
+      
+      
+                //Display Table Data
+          $("#showTable").click(function(){
+            $("#TableData").html("");
+            myDB.transaction(function(transaction) {
+            transaction.executeSql('SELECT * FROM phonegap_pro', [], function (tx, results) {
+                 var len = results.rows.length, i;
+                 $("#rowCount").html(len);
+                 for (i = 0; i < len; i++){
+                    $("#TableData").append("<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
+                 }
+              }, null);
+            });
+          });
+                
+      
+      
+      
+      
+      
+      
       // --------------------------------
     
            $("#DropTable").click(function(){
            
-           alert("dropping the mic");
+           alert("dropping the table");
            
           myDB.transaction(function(transaction) {
               var executeQuery = "DROP TABLE  IF EXISTS phonegap_pro";
