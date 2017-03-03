@@ -1,28 +1,34 @@
 
 
-// 1. put JSON call in a function of its own and call it when document is loaded or when device has loaded - DONE
-// 2. check if we are online or offline 
-
-
-
-//$("#listview").append("<p>Something</p>");
-
-
-function nothing()
-
-{
-
-}
 
     
 demoP = document.getElementById("demo");
+
+
+function createTable() 
+{
+     myDB.transaction(function(transaction) {
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+              function(tx, result) {
+                  alert("Table created successfully");
+              }, 
+              function(error) {
+                    alert("Error occurred while creating the table.");
+              });
+          });
+}
+
 
 
    function saveToDb(item, index) {
     
     demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.venue + "<br>";
     
-    //alert("index:"+index+" item:"+item.title);
+    // create a new table if it doesnt already exist
+    
+    
+
+    
     
     
     var sqltitle = item.venue;
@@ -108,6 +114,10 @@ proc_array = $.map(resulty, function(value, index) {
 
 
 console.log(proc_array);
+
+// create a table if it doesn't exist
+
+createTable();
 
 
 proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
