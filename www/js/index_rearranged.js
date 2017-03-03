@@ -156,7 +156,18 @@ $(document).ready(function() {
       });
       // --------------------------------
     
-    
+           $("#DropTable").click(function(){
+           
+           alert("dropping the mic");
+           
+          myDB.transaction(function(transaction) {
+              var executeQuery = "DROP TABLE  IF EXISTS phonegap_pro";
+              transaction.executeSql(executeQuery, [],
+                  function(tx, result) {alert('Table deleted successfully.');},
+                  function(error){alert('Error occurred while droping the table.');}
+              );
+          });
+      });
     
     
     
