@@ -59,15 +59,14 @@ console.log(proc_array);
  
 // can I do an db insert here? 
  
-document.addEventListener("deviceready",onDeviceReady,false);
-function onDeviceReady(){
-
- alert("inside deviceReady. something from outside = " +something);     // this works. you can take a variable from just above this and display it above.
-                                                       // but it wont take the array proc_array because it hasnt been created
+ 
+ 
+ 
+ 
+ 
+ 
  
 
-} 
- 
  
  
  
@@ -182,15 +181,71 @@ $(document).ready(function() {
            $("#DropTable").click(function(){
            
            alert("dropping the table");
-           
+              
           myDB.transaction(function(transaction) {
               var executeQuery = "DROP TABLE  IF EXISTS phonegap_pro";
               transaction.executeSql(executeQuery, [],
                   function(tx, result) {alert('Table deleted successfully.');},
                   function(error){alert('Error occurred while droping the table.');}
-              );
-          });
-      });
+                  );
+              });
+           });
+    
+    
+    
+    
+    $("#insert").click(function(){
+ 
+ 
+ //var title=proc_array[1].title;
+  var desc="blahdeblah"; 
+  
+  
+  var somevar;
+  
+  somevar = test(8);
+  
+  alert("Insert function" + somevar);
+    
+ //alert("insert:"+proc_array[1].title+" length:"+objlength);
+                      // objlength
+  
+   
+   /*
+   for (i = 0; i < 10; i++){
+   
+   title = proc_array[i].title;
+   desc = proc_array[i].cname;
+   
+   $("#titlestring").append("<br>("+i+") "+title+" - " + desc);
+     
+
+
+     /*
+     myDB.transaction(function(transaction) {
+     
+        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [title,desc]
+            , function(tx, result) {
+                 alert('Inserted: '+title);
+            },
+            function(error){
+                 alert('Error occurred: '+title); 
+            });
+            
+           
+            
+    });   // end of myDB.transaction
+        */
+        
+        
+        
+        
+            //}    // end of loop
+            
+ 
+ 
+        });    // end of insert
     
     
     
@@ -198,7 +253,13 @@ $(document).ready(function() {
     
     
     
-});
+    
+});      // end of doc ready
+
+
+
+
+
 
 
 
@@ -233,17 +294,6 @@ alert("networkOn="+connectionStatus);
 
 
 
-    
-
-
-
-
- 
-
-
-
-
-
 
 
 
@@ -251,7 +301,14 @@ alert("networkOn="+connectionStatus);
 
 
 
+function test(i)
 
+  {
+  var somearray = {"blah", "weird", "pop"};
+  i=i+5;
+  alert("test func i="+i)
+  return i;  
+  }
 
 
 
