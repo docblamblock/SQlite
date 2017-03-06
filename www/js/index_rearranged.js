@@ -242,7 +242,7 @@ $(document).ready(function() {
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
             
-            var kinlay = "kinlay";
+            var kinlay = "%Kinlay%";
             transaction.executeSql('SELECT * FROM phonegap_pro where title LIKE ?', [kinlay], function (tx, results) {
             
              
