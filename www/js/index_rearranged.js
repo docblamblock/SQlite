@@ -254,8 +254,8 @@ $(document).ready(function() {
                  image.src = results.rows.item(i).desc;
                  image.width = 50;
                  
-                 $("#TableData").append("<tr><td>"+image+"</td><td>"++results.rows.item(i).title+"</td></tr>");
-                 
+                 $("#TableData").append(image);
+                 $("#TableData").append("<br>"+results.rows.item(i).title+"<br>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
