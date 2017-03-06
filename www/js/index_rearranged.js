@@ -7,6 +7,7 @@ demoP = document.getElementById("demo");
 
 function createTable() 
 {
+/*
      myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
               function(tx, result) {
@@ -16,6 +17,8 @@ function createTable()
                     alert("Error occurred while creating the table.");
               });
           });
+          
+          */
 }
 
 
@@ -32,9 +35,15 @@ function createTable()
     
     
     var sqltitle = item.venue;
-    var sqldesc = item.address;
+    var sqldesc = item.base64;
+    
+    var image = new Image();
+    image.src = desc;
+    //$("#listview").append(image);
     
     
+    
+       /*
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -51,7 +60,7 @@ function createTable()
             
                                });   // end of myDB.transaction
          
-                     
+            */         
     
      //alert('Rows: inserted: '+count);
     
@@ -94,12 +103,14 @@ $.getJSON(url,function(resulty){
      $.each(resulty, function(i, field){
      
      var title      = field.venue;
-     var desc = field.address;
+     var desc = field.base64;
      
-    
+     var image = new Image();
+    image.src = desc;
+    //$("#listview").append(image);
      
      
-     $("#listview").append(i+" : "+title+" (" + desc+")");
+     //$("#listview").append(i+" : "+title+" (" + desc+")");
      });
      
 
@@ -113,7 +124,7 @@ proc_array = $.map(resulty, function(value, index) {
             });
 
 
-console.log(proc_array);
+//console.log(proc_array);
 
 // create a table if it doesn't exist
 
@@ -232,10 +243,22 @@ $(document).ready(function() {
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
             transaction.executeSql('SELECT * FROM phonegap_pro', [], function (tx, results) {
+            
+             
+            
+            
+    //$("#listview").append(image);
+            
+            
                  var len = results.rows.length, i;
                  $("#rowCount").html(len);
                  for (i = 0; i < len; i++){
-                    $("#TableData").append("<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
+                 
+                 var image = new Image();
+                 image.src = desc;
+                 image.width = 50;
+                 
+                    $("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                  }
               }, null);
             });
@@ -311,7 +334,7 @@ $(document).ready(function() {
     
     
  // use this for debugging on computer. delete before compiling!   
- //getPROC();
+ getPROC();
     
 });      // end of doc ready
 
