@@ -25,7 +25,7 @@ function createTable()
 
    function saveToDb(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.venue + "<br>";
+    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.desc + "<br>";
     
     
     
@@ -102,7 +102,8 @@ $.getJSON(url,function(resulty){
      
      var image = new Image();
     image.src = desc;
-    //$("#listview").append(image);
+    image.width = 50;
+    $("#listview").append(image);
      
      
      //$("#listview").append(i+" : "+title+" (" + desc+")");
