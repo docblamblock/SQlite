@@ -27,18 +27,13 @@ function createTable()
     
     demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.venue + "<br>";
     
-    // create a new table if it doesnt already exist
-    
-    createTable();
-
     
     
     
     var sqltitle = item.venue;
     var sqldesc = item.base64;
     
-    var image = new Image();
-    image.src = desc;
+    
     //$("#listview").append(image);
     
     
