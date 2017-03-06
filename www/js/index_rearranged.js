@@ -43,7 +43,7 @@ function createTable()
     
     
     
-       /*
+      
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
@@ -60,7 +60,7 @@ function createTable()
             
                                });   // end of myDB.transaction
          
-            */         
+                 
     
      //alert('Rows: inserted: '+count);
     
@@ -255,7 +255,7 @@ $(document).ready(function() {
                  for (i = 0; i < len; i++){
                  
                  var image = new Image();
-                 image.src = desc;
+                 image.src = results.rows.item(i).desc;
                  image.width = 50;
                  
                     $("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
@@ -334,7 +334,7 @@ $(document).ready(function() {
     
     
  // use this for debugging on computer. delete before compiling!   
- getPROC();
+ //getPROC();
     
 });      // end of doc ready
 
