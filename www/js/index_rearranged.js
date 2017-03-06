@@ -7,9 +7,9 @@ demoP = document.getElementById("demo");
 
 function createTable() 
 {
-/*
+
      myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc blob)', [],
               function(tx, result) {
                   alert("Table created successfully");
               }, 
@@ -18,7 +18,7 @@ function createTable()
               });
           });
           
-          */
+        
 }
 
 
@@ -29,7 +29,7 @@ function createTable()
     
     // create a new table if it doesnt already exist
     
-    
+    createTable();
 
     
     
