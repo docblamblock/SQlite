@@ -36,7 +36,7 @@ $kiosk_name_search = "imperial";
 
 $one = 1;
 
-$query = "SELECT infoID, venue, address, gps, location, category, sub_cat, short_info, info, short_info_ga_IE, info_ga_IE, features, web, open, youtube, contact, img, added, active, position, distance_from_city_centre  FROM tourist_info where active=? order by category, infoID limit 300";
+$query = "SELECT infoID, venue, address, gps, location, category, sub_cat, short_info, info, short_info_ga_IE, info_ga_IE, features, web, open, youtube, contact, img, added, active, position, distance_from_city_centre  FROM tourist_info where active=? order by category, infoID limit 150";
 
 //echo $query_gps;
 
@@ -101,7 +101,7 @@ if ($stmt = $mysqli->prepare($query)) {
         $data = file_get_contents($path);
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
      
-        $content_array[$i]['base64']                 = "dummy";
+        $content_array[$i]['base64']                 = $base64;
     
         //print "<br>$venue, $img ".$content_array[$i]['base64']."<img src=\"http://www.peoplesrepublicofcork.com/eventguide/uploads/$img\">";
         
