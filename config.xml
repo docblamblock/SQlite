@@ -33,6 +33,10 @@
         <splash src="ldpi.png" platform="android" qualifier="ldpi" />
         </platform>
        
+       <platform name="ios" >            
+        <splash src="ldpi.png" platform="ios" qualifier="ldpi" />
+        </platform>
+       
 
         <!-- PLUGINS * PLUGINS * PLUGINS -->
         <!-- Core plugins -->
