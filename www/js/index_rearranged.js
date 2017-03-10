@@ -30,8 +30,8 @@ function createTable()
     
     
     
-    var this_venue = item.venue;
-    var this_imgbase64 = item.base64;
+    var this_venue = item.venue;            // venue is the name of the element on the JSON feed from PROC
+    var this_imgbase64 = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
     
     
     //$("#listview").append(image);
@@ -106,7 +106,7 @@ $.getJSON(url,function(resulty){
     $("#listview").append(image);
      
      
-     $("#listview").append(i+" : "+venue+",");
+     $("#listview").append(i+" : "+this_venue+",");
      });
      
 
@@ -312,12 +312,13 @@ $(document).ready(function() {
  //alert("insert:"+proc_array[1].title+" length:"+objlength);
                       // objlength
   
-   
+   var this_title = "hard wired";
+   var this_imgbase64 = "set in func";
 
      myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
-        transaction.executeSql(executeQuery, [title,desc]
+        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [this_title,this_imgbase64]
             , function(tx, result) {
                  alert('Inserted: '+title);
             },
