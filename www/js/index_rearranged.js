@@ -50,7 +50,7 @@ function createTable()
       
        myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (venue, address, gps, location, category, sub_category, short_info, imgbase64) VALUES (?,?,?,?,?)";             
+        var executeQuery = "INSERT INTO phonegap_pro (venue, address, gps, location, category, sub_category, short_info, imgbase64) VALUES (?,?,?,?,?,?,?,?)";             
         
         transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_imgbase64]
             , function(tx, result) {
