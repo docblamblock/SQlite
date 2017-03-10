@@ -25,7 +25,7 @@ function createTable()
 
    function saveToDb(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.base64 + "<br>";
+    //demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.base64 + "<br>";
     
     
     
@@ -222,7 +222,7 @@ $(document).ready(function() {
       
       
           myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, imgbase64 text)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, imgbase64 blob)', [],
               function(tx, result) {
                   alert("Table created successfully");
               }, 
