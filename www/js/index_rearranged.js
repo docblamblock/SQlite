@@ -9,7 +9,7 @@ function createTable()
 {
 
      myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc blob)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, imgbase64 blob)', [],
               function(tx, result) {
                   alert("Table created successfully");
               }, 
@@ -25,13 +25,13 @@ function createTable()
 
    function saveToDb(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.desc + "<br>";
+    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item.base64 + "<br>";
     
     
     
     
-    var sqltitle = item.venue;
-    var sqldesc = item.base64;
+    var this_venue = item.venue;
+    var this_imgbase64 = item.base64;
     
     
     //$("#listview").append(image);
@@ -41,9 +41,9 @@ function createTable()
       
        myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
+        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
         
-        transaction.executeSql(executeQuery, [sqltitle,sqldesc]
+        transaction.executeSql(executeQuery, [this_venue,this_imgbase64]
             , function(tx, result) {
                  //count +=1;//alert('Inserted: '+sqltitle);
             },
@@ -242,8 +242,8 @@ $(document).ready(function() {
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
             
-            var kinlay = "%Kinlay%";
-            transaction.executeSql('SELECT * FROM phonegap_pro where title LIKE ?', [kinlay], function (tx, results) {
+            var kinlay = "%Sheila%";
+            transaction.executeSql('SELECT * FROM phonegap_pro where venue LIKE ?', [kinlay], function (tx, results) {
             
              
             
@@ -262,7 +262,7 @@ $(document).ready(function() {
                   */
                  $("#TableData").append("<tr><td>"); 
                  //$("#TableData").append(image);
-                 $("#TableData").append("</td><td>"+results.rows.item(i).title+"</td><td>Click here</td></tr>"); 
+                 $("#TableData").append("</td><td>"+results.rows.item(i).venue+"</td><td>Click here</td></tr>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
