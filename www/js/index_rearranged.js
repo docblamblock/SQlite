@@ -119,7 +119,9 @@ alert("Going to show infoID="+display_this_infoID);
 
 
 
-} // end of display this infoID
+} 
+
+}// end of display this infoID
 
 
 
@@ -155,7 +157,7 @@ function getPROC ()
  // var url="http://www.kiosks.ie/poc_json.php";
  
  
- var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=100";
+ var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15";
 
 
 
