@@ -10,12 +10,12 @@ function status_bar(this_var)
 {
 var number = this_var;
 
-alert("status="+this_var);
+//alert("status="+this_var);
 
         if (number==1)
         {
         $("#status").css('background', 'red');
-        $("#status").html("<p>Loading..</p>");
+        $("#status").html("<p>Updating content..</p>");
         
         
         }
@@ -28,6 +28,49 @@ alert("status="+this_var);
 
 }
 
+
+
+
+
+function getLastUpdateTime()
+ 
+ {
+     var d = new Date();
+document.getElementById("date").innerHTML = d;    
+var seconds = d.getTime() / 1000;
+document.getElementById("date").append("  Seconds"+seconds);
+
+return(seconds);
+
+myDB.transaction(function(transaction) {
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update (id integer primary key, time_of_last_update text)', [],
+              function(tx, result) {
+                  alert("Table last_update created successfully");
+              }, 
+              function(error) {
+                    alert("Error occurred while creating the table.");
+              });
+          });
+          
+myDB.transaction(function(transaction) {
+     
+        var executeQuery = "INSERT INTO last_update (time_of_last_update) VALUES (?)";             
+        
+        transaction.executeSql(executeQuery, [seconds]
+            , function(tx, result) {
+                alert('Inserted: '+seconds);
+            },
+            function(error){
+                 alert('Error occurred trying to insert time: '+seconds); 
+            });
+            
+           
+            });   // end of myDB.transaction
+    
+
+
+
+ }
 
 
 
@@ -307,8 +350,14 @@ function checkConnection() {
  */
 
 
+
 $(document).ready(function() {
     // are we running in native app or in a browser?
+    
+
+
+  
+    
     window.isphone = false;
     
     if(document.URL.indexOf("http://") === -1 
@@ -486,7 +535,14 @@ function onDeviceReady() {
 
 
 
+
+
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
+
+var lastUpdate;
+lastUpdate = getLastUpdateTime();
+alert("Time is now " + lastUpdate);  
+
 
 
 // if connected to the internet then get db from PROC
@@ -502,6 +558,10 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
         connectionStatus = 'offline'; 
     } else {
         connectionStatus = 'online';
+        
+        
+        // get todays date
+        
         
         alert("going to getPROC now");
 
