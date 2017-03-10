@@ -89,7 +89,7 @@ myDB.transaction(function(transaction) {
                  
                  alert("In the read db function");
                  
-                 var db_last_update = results.rows.item(i).desc;
+                 var db_last_update = results.rows.item(i).time_of_last_update;
                  
                  $("#lastUpdate").append("Last Update in dB: " + db_last_update); 
            
