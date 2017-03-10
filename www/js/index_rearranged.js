@@ -244,9 +244,9 @@ $(document).ready(function() {
             myDB.transaction(function(transaction) {
             
             var kinlay = "%Sheila%";
-            transaction.executeSql('SELECT * FROM phonegap_pro where venue LIKE ?', [kinlay], function (tx, results) {
+            //transaction.executeSql('SELECT * FROM phonegap_pro where venue LIKE ?', [kinlay], function (tx, results) {
             
-             
+            transaction.executeSql('SELECT * FROM phonegap_pro', [], function (tx, results) { 
             
             
     //$("#listview").append(image);
