@@ -40,10 +40,12 @@ document.getElementById("date").innerHTML = d;
 var seconds = d.getTime() / 1000;
 document.getElementById("date").append("  Seconds"+seconds);
 
-return(seconds);
+
+
+
 
 myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update (id integer primary key, time_of_last_update text)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text)', [],
               function(tx, result) {
                   alert("Table last_update created successfully");
               }, 
@@ -51,10 +53,11 @@ myDB.transaction(function(transaction) {
                     alert("Error occurred while creating the table.");
               });
           });
-          
+ 
+ /*         
 myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO last_update (time_of_last_update) VALUES (?)";             
+        var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
         
         transaction.executeSql(executeQuery, [seconds]
             , function(tx, result) {
@@ -66,9 +69,10 @@ myDB.transaction(function(transaction) {
             
            
             });   // end of myDB.transaction
-    
+            */
+ 
 
-
+return(seconds);
 
  }
 
