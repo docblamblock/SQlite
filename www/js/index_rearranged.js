@@ -104,13 +104,10 @@ myDB.transaction(function(transaction) {
            
                  }
               }, null);
-            }).then(function() {
-  alert("returning this time: " + db_last_update);
-return(db_last_update);
-});
+            });
 
 
-
+ return (db_last_update);
  
 
 
@@ -326,7 +323,7 @@ createTable();
 
 
 
-//proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
+proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
                                    // i.e. if there are 10 objects then saveToDb is called 10 times.  
 
 
@@ -592,13 +589,34 @@ function onDeviceReady() {
     alert("Device is Ready");    
 
 
+function timeSuccess()
+{
+ alert("timeSuccess");
+}
 
 
 
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 var lastUpdate;
-lastUpdate = getLastUpdateTime();
+
+// this is where I finished on Fri 10th March.
+// Absolute frustration because the code here isnt waiting for
+// getLastUpdateTime() to return the last time the db was updated.
+// its just returned undefined because its not fucking waiting!!
+
+// check the code in test.html which might help resolve this
+// but best to try to mimic the dB call with a timeout func first
+// instead of continualy compiling. 
+
+/*
+lastUpdate = function(timeSuccess, getLastUpdateTime()).then(function() {
+      alert("then.done");
+    });
+*/
+
+
+
 alert("Time is now " + lastUpdate);  
 
 
