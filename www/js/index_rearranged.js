@@ -38,7 +38,7 @@ function getLastUpdateTime()      // puts current time into the database
      var d = new Date();
 document.getElementById("date").innerHTML = d;    
 var seconds = d.getTime() / 1000;
-document.getElementById("date").append("  Seconds"+seconds);
+document.getElementById("date").append("  now = Seconds"+seconds);
 
 
 //var dummy = "testing one two three";
@@ -74,7 +74,9 @@ myDB.transaction(function(transaction) {
          
          // see if there's an last update time in the database
          // if there is then return it
-         
+  
+  
+ var db_last_update;        
 
  myDB.transaction(function(transaction) {
             
@@ -94,7 +96,7 @@ myDB.transaction(function(transaction) {
                  
                  alert("In the read db function i="+i+" value: " + results.rows.item(i).time_of_last_update);
                  
-                 var db_last_update = results.rows.item(i).time_of_last_update;
+                 db_last_update = results.rows.item(i).time_of_last_update;
                  
                  $("#lastUpdate").append("Last Update in dB: " + db_last_update); 
            
@@ -263,10 +265,7 @@ function getPROC ()
 
 { 
 
- // var url="http://www.kiosks.ie/poc_json.php";
- 
- 
- var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=150";
+var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=150";
 
 status_bar(1);
 
@@ -597,15 +596,6 @@ myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default
 var lastUpdate;
 lastUpdate = getLastUpdateTime();
 alert("Time is now " + lastUpdate);  
-
-
-
-// if connected to the internet then get db from PROC
-
-//
-
-// if no connection then tell us
-
 
 
 
