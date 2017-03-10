@@ -231,11 +231,16 @@ createTable();
 proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
                                    // i.e. if there are 10 objects then saveToDb is called 10 times.  
 
-status_bar(0);
 
-
- });    // end of GET.JSON
+    // end of GET.JSON
  
+
+ }).then(function() {
+  status_bar(0);
+});   
+
+
+
 
 
 // Q: can I do a db insert here? 
