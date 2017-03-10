@@ -23,7 +23,12 @@ function createTable()
 
 
 
-   function saveToDb(item, index) {
+
+
+
+
+
+function saveToDb(item, index) {
     
     //demoP.innerHTML = demoP.innerHTML + "Saving:  " + item.infoID + "  (" + item.info + ")<br>";
     
@@ -63,18 +68,73 @@ function createTable()
            
             
                                });   // end of myDB.transaction
-         
-   
     
      
 }  
  
- 
- function open_this_info(var1)
- {
- alert("message: " + var1);
- 
- }
+
+
+
+function display_table(display_infoID)
+{
+
+var display_this_infoID= display_infoID;
+
+alert("Going to show infoID="+display_this_infoID);
+          
+            $("#TableData").html("");
+            myDB.transaction(function(transaction) {
+     
+            //transaction.executeSql('SELECT * FROM phonegap_pro where venue LIKE ?', [kinlay], function (tx, results) {
+            
+            transaction.executeSql('SELECT * FROM phonegap_pro where infoID = ?', [display_this_infoID], function (tx, results) { 
+            
+            
+    //$("#listview").append(image);
+            
+            
+                 var len = results.rows.length, i;
+                 $("#rowCount").html(len);
+                 for (i = 0; i < len; i++){
+                 
+                 
+                 var image = new Image();
+                 image.src = results.rows.item(i).imgbase64;
+                 image.width = 50;
+                 //$("#listview").append(image);
+                 
+                 /*
+                 var image = new Image();
+                 image.src = results.rows.item(i).desc;
+                 image.width = 50;
+                  */
+                 $("#TableData").append("<tr><td>"); 
+                 $("#TableData").append(image);
+                 $("#TableData").append("</td><td><a onClick='display_table("+results.rows.item(i).infoID+");'>"+results.rows.item(i).venue+"</a> (" + results.rows.item(i).infoID+")</td><td>"+results.rows.item(i).address+"</td></tr>"); 
+                 
+                    //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
+                    
+                 }
+              }, null);
+
+
+
+} // end of display this infoID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var myDB;
@@ -291,13 +351,15 @@ $(document).ready(function() {
                   */
                  $("#TableData").append("<tr><td>"); 
                  $("#TableData").append(image);
-                 $("#TableData").append("</td><td><a href='' onClick='open_this_info("+results.rows.item(i).infoID+");'>"+results.rows.item(i).venue+"</a> (" + results.rows.item(i).infoID+")</td><td>"+results.rows.item(i).address+"</td></tr>"); 
+                 $("#TableData").append("</td><td><a onClick='open_this_info("+results.rows.item(i).infoID+");'>"+results.rows.item(i).venue+"</a> (" + results.rows.item(i).infoID+")</td><td>"+results.rows.item(i).address+"</td></tr>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
                  }
               }, null);
             });
+            
+            
           });
                 
       
