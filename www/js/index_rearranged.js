@@ -80,7 +80,7 @@ myDB.transaction(function(transaction) {
 
  db_last_update = "set by me";
 
- myDB.transaction(function(transaction) {
+ myDB.transaction( function(transaction) {
             
           
             transaction.executeSql('SELECT * FROM last_update_table', [], function (tx, results) { 
@@ -104,10 +104,12 @@ myDB.transaction(function(transaction) {
            
                  }
               }, null);
-            });
-
-alert("returning this time: " + db_last_update);
+            }).then(function() {
+  alert("returning this time: " + db_last_update);
 return(db_last_update);
+});
+
+
 
  
 
