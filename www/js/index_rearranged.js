@@ -9,7 +9,7 @@ function createTable()
 {
 
      myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, info text, gps text, location integer, category integer, sub_category integer, imgbase64 blob)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
               function(tx, result) {
                   alert("Table created successfully");
               }, 
@@ -25,7 +25,7 @@ function createTable()
 
    function saveToDb(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "  " + item.infoID + "  (" + item.info + ")<br>";
+    demoP.innerHTML = demoP.innerHTML + "Saving:  " + item.infoID + "  (" + item.info + ")<br>";
     
     
     
@@ -129,7 +129,7 @@ $.getJSON(url,function(resulty){
      $("#listview").append(i+" : "+this_infoID+" ("+this_info+")");
      });
      
-
+$("#listview").append("<br>--------- / end of getPROC() -----<br>");
 
 objlength = Object.keys(resulty).length;     // get number of elements
 //alert("objlength="+objlength);
