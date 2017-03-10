@@ -85,7 +85,7 @@ function getPROC ()
  // var url="http://www.kiosks.ie/poc_json.php";
  
  
- var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php";
+ var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=5";
 
 
 
@@ -97,16 +97,16 @@ $.getJSON(url,function(resulty){
              
      $.each(resulty, function(i, field){
      
-     var title      = field.venue;
-     var desc = field.base64;
+     var this_venue      = field.venue;
+     var this_imgbase64 = field.base64;
      
      var image = new Image();
-    image.src = desc;
+    image.src = this_imgbase64;
     image.width = 50;
     $("#listview").append(image);
      
      
-     //$("#listview").append(i+" : "+title+" (" + desc+")");
+     $("#listview").append(i+" : "+venue+",");
      });
      
 
@@ -222,7 +222,7 @@ $(document).ready(function() {
       
       
           myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, imgbase64 text)', [],
               function(tx, result) {
                   alert("Table created successfully");
               }, 
@@ -238,6 +238,7 @@ $(document).ready(function() {
           $("#showTable").click(function(){
           
           
+          alert("Going to display table..");
           
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
