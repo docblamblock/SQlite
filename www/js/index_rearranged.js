@@ -13,8 +13,12 @@ var number = this_var;
 alert("status="+this_var);
 
 if (number==1)
+{
+$("#status").css('background', 'red');
 $("#status").html("<p>Loading..</p>");
 
+
+}
 if (number==0)
 $("#status").html("<p>Ready</p>");  
  
