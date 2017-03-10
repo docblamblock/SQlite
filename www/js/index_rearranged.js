@@ -5,8 +5,23 @@
 demoP = document.getElementById("demo");
 
 
-function createTable() 
+
+function status_bar(this_var)
 {
+var number = this_var;
+
+alert("status="+this_var);
+
+if (number==1)
+$("#status").html("<p>Loading..</p>");
+
+if (number==0)
+$("#status").html("<p>Ready</p>");  
+ 
+}
+
+function createTable() 
+{   
 
      myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
@@ -208,13 +223,15 @@ proc_array = $.map(resulty, function(value, index) {
 
 // create a table if it doesn't exist
 
+
+status_bar(1);
 createTable();
 
 
 proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
                                    // i.e. if there are 10 objects then saveToDb is called 10 times.  
 
-
+status_bar(0);
 
 
  });    // end of GET.JSON
