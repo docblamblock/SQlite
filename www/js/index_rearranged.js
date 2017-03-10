@@ -119,7 +119,7 @@ alert("Going to show infoID="+display_this_infoID);
 
 
 
-} 
+ });
 
 }// end of display this infoID
 
