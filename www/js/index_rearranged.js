@@ -20,6 +20,8 @@ $("#status").html("<p>Loading..</p>");
 
 }
 if (number==0)
+{
+$("#status").css('background', 'green');
 $("#status").html("<p>Ready</p>");  
  
 }
@@ -176,7 +178,7 @@ function getPROC ()
  // var url="http://www.kiosks.ie/poc_json.php";
  
  
- var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15";
+ var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=150";
 
 
 
