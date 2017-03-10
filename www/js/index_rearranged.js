@@ -32,7 +32,7 @@ var number = this_var;
 
 
 
-function getLastUpdateTime()      // puts current time into the database 
+function getLastUpdateTime()      // puts current time into the database
  
  {
      var d = new Date();
@@ -54,10 +54,22 @@ myDB.transaction(function(transaction) {
               });
           });
  
- 
- 
-insert_current_time_into_database();
-
+         
+myDB.transaction(function(transaction) {
+     
+        var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
+        
+        transaction.executeSql(executeQuery, [seconds]
+            , function(tx, result) {
+                alert('Inserted: '+seconds);
+            },
+            function(error){
+                 alert('Error occurred trying to insert time: '+seconds); 
+            });
+            
+           
+            });   // end of myDB.transaction
+         
 
  myDB.transaction(function(transaction) {
             
@@ -88,35 +100,12 @@ insert_current_time_into_database();
 
 
 
-
  
 
 return(seconds);
 
  }
 
-
-
-function insert_current_time_into_database()
-{
-
-if (myDB.transaction(function(transaction) {
-     
-        var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
-        
-        transaction.executeSql(executeQuery, [seconds]
-            , function(tx, result) {
-                alert('Inserted: '+seconds);
-            },
-            function(error){
-                 alert('Error occurred trying to insert time: '+seconds); 
-            });
-            
-           
-            });   // end of myDB.transaction
-         )
-
-}
 
 
 
