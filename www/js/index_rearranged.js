@@ -43,7 +43,7 @@ document.getElementById("date").append("  Seconds"+seconds);
 
 //var dummy = "testing one two three";
 
-
+ /*
 myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text)', [],
               function(tx, result) {
@@ -69,6 +69,11 @@ myDB.transaction(function(transaction) {
             
            
             });   // end of myDB.transaction
+         
+         */
+         
+         // see if there's an last update time in the database
+         // if there is then return it
          
 
  myDB.transaction(function(transaction) {
@@ -97,12 +102,12 @@ myDB.transaction(function(transaction) {
               }, null);
             });
 
-
-
+alert("returning this time: " + results.rows.item(i).time_of_last_update);
+return(results.rows.item(i).time_of_last_update);
 
  
 
-return(seconds);
+
 
  }
 
