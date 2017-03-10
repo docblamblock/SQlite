@@ -9,7 +9,7 @@ function createTable()
 {
 
      myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, imgbase64 blob)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, gps text, location integer, category integer, imgbase64 blob)', [],
               function(tx, result) {
                   alert("Table created successfully");
               }, 
@@ -30,7 +30,12 @@ function createTable()
     
     
     
-    var this_venue = item.venue;            // venue is the name of the element on the JSON feed from PROC
+    var this_venue    = item.venue;            // venue is the name of the element on the JSON feed from PROC
+    var this_gps      = item.gps;
+    var this_location = item.location;
+    var this_category = item.category;
+    
+    
     var this_imgbase64 = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
     
     
@@ -41,9 +46,9 @@ function createTable()
       
        myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
+        var executeQuery = "INSERT INTO phonegap_pro (venue, gps, location, category, imgbase64) VALUES (?,?,?,?,?)";             
         
-        transaction.executeSql(executeQuery, [this_venue,this_imgbase64]
+        transaction.executeSql(executeQuery, [this_venue, this_gps, this_location, this_category, this_imgbase64]
             , function(tx, result) {
                  //count +=1;//alert('Inserted: '+sqltitle);
             },
@@ -57,7 +62,7 @@ function createTable()
          
                  
     
-     //alert('Rows: inserted: '+count);
+     
     
     
     
@@ -99,6 +104,9 @@ $.getJSON(url,function(resulty){
      
      var this_venue      = field.venue;
      var this_imgbase64 = field.base64;
+     var this_gps      = field.gps;
+    var this_location = field.location;
+    var this_category = field.category;
      
      var image = new Image();
     image.src = this_imgbase64;
@@ -269,7 +277,7 @@ $(document).ready(function() {
                   */
                  $("#TableData").append("<tr><td>"); 
                  $("#TableData").append(image);
-                 $("#TableData").append("</td><td>"+results.rows.item(i).venue+"</td><td>Click here</td></tr>"); 
+                 $("#TableData").append("</td><td>"+results.rows.item(i).venue+" (" + results.rows.item(i).gps+")</td><td>"+results.rows.item(i).location+" and " +results.rows.item(i).category+"</td></tr>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
