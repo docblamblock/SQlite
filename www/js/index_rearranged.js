@@ -94,7 +94,7 @@ function getPROC ()
  // var url="http://www.kiosks.ie/poc_json.php";
  
  
- var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=5";
+ var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=100";
 
 
 
@@ -123,10 +123,10 @@ $.getJSON(url,function(resulty){
       var image = new Image();
       image.src = this_imgbase64;
       image.width = 50;
-      $("#listview").append(image);
+      //$("#listview").append(image);
      
      
-     $("#listview").append(i+" : "+this_infoID+" ("+this_info+")");
+     //$("#listview").append(i+" : "+this_infoID+" ("+this_info+")");
      });
      
 $("#listview").append("<br>--------- / end of getPROC() -----<br>");
