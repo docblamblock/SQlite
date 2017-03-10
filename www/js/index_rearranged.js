@@ -70,6 +70,45 @@ myDB.transaction(function(transaction) {
            
             });   // end of myDB.transaction
          
+
+ myDB.transaction(function(transaction) {
+            
+          
+            transaction.executeSql('SELECT * FROM last_update_table', [], function (tx, results) { 
+            
+            
+    //$("#listview").append(image);
+            
+            
+                 
+                
+                
+                 
+                 for (i = 0; i < len; i++){
+                 
+                 
+                 var db_last_update = results.rows.item(i).desc;
+                 
+                 $("#lastUpdate").append("Last Update in dB: " + db_last_update); 
+           
+                 }
+              }, null);
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 return(seconds);
