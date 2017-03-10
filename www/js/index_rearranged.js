@@ -82,12 +82,12 @@ myDB.transaction(function(transaction) {
                  alert("In the read db loop");
                  
                 
-                
+                 var len = results.rows.length, i;
                  
                  for (i = 0; i < len; i++){
                  
                  
-                 alert("In the read db function");
+                 alert("In the read db function i="+i+" value: " + results.rows.item(i).time_of_last_update);
                  
                  var db_last_update = results.rows.item(i).time_of_last_update;
                  
