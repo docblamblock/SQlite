@@ -41,7 +41,7 @@ var seconds = d.getTime() / 1000;
 document.getElementById("date").append("  Seconds"+seconds);
 
 
-
+var dummy = "testing one two three";
 
 
 myDB.transaction(function(transaction) {
@@ -54,14 +54,14 @@ myDB.transaction(function(transaction) {
               });
           });
  
- /*         
+         
 myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
         
-        transaction.executeSql(executeQuery, [seconds]
+        transaction.executeSql(executeQuery, [dummy]
             , function(tx, result) {
-                alert('Inserted: '+seconds);
+                alert('Inserted: '+dummy);
             },
             function(error){
                  alert('Error occurred trying to insert time: '+seconds); 
@@ -69,7 +69,7 @@ myDB.transaction(function(transaction) {
             
            
             });   // end of myDB.transaction
-            */
+         
  
 
 return(seconds);
