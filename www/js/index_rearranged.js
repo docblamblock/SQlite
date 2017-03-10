@@ -78,6 +78,8 @@ myDB.transaction(function(transaction) {
   
  var db_last_update;        
 
+ db_last_update = "set by me";
+
  myDB.transaction(function(transaction) {
             
           
