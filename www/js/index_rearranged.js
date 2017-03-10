@@ -41,7 +41,7 @@ var seconds = d.getTime() / 1000;
 document.getElementById("date").append("  Seconds"+seconds);
 
 
-var dummy = "testing one two three";
+//var dummy = "testing one two three";
 
 
 myDB.transaction(function(transaction) {
@@ -59,9 +59,9 @@ myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
         
-        transaction.executeSql(executeQuery, [dummy]
+        transaction.executeSql(executeQuery, [seconds]
             , function(tx, result) {
-                alert('Inserted: '+dummy);
+                alert('Inserted: '+seconds);
             },
             function(error){
                  alert('Error occurred trying to insert time: '+seconds); 
@@ -96,17 +96,6 @@ myDB.transaction(function(transaction) {
                  }
               }, null);
             });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -513,6 +502,22 @@ $(document).ready(function() {
                   );
               });
            });
+    
+    
+    
+           $("#DropTableLastUpdate").click(function(){
+           
+           alert("dropping the table");
+              
+          myDB.transaction(function(transaction) {
+              var executeQuery = "DROP TABLE  IF EXISTS last_update_table";
+              transaction.executeSql(executeQuery, [],
+                  function(tx, result) {alert('Table deleted successfully.');},
+                  function(error){alert('Error occurred while droping the table.');}
+                  );
+              });
+           });
+    
     
     
     
