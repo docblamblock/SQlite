@@ -9,7 +9,7 @@ function createTable()
 {
 
      myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, imgbase64 blob)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, info text, gps text, location integer, category integer, sub_category integer, imgbase64 blob)', [],
               function(tx, result) {
                   alert("Table created successfully");
               }, 
@@ -25,15 +25,15 @@ function createTable()
 
    function saveToDb(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "  " + item.address + "  (" + item.short_info + ")<br>";
+    demoP.innerHTML = demoP.innerHTML + "  " + item.infoID + "  (" + item.info + ")<br>";
     
     
     
-    
+    var this_infoID             = item.infoID; 
     var this_venue              = item.venue;            // venue is the name of the element on the JSON feed from PROC
     var this_address            = item.address;
     var this_short_info         = item.short_info;
-    
+    var this_info               = item.info;
     
     var this_gps                = item.gps;
     var this_location           = item.location;
@@ -50,9 +50,9 @@ function createTable()
       
        myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (venue, address, gps, location, category, sub_category, short_info, imgbase64) VALUES (?,?,?,?,?,?,?,?)";             
+        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)";             
         
-        transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_imgbase64]
+        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
             , function(tx, result) {
                  //count +=1;//alert('Inserted: '+sqltitle);
             },
@@ -106,15 +106,18 @@ $.getJSON(url,function(resulty){
              
      $.each(resulty, function(i, field){
      
+      var this_infoID        = field.infoID;
       var this_venue          = field.venue;
       var this_address        = field.address;
       
       var this_gps            = field.gps;
       var this_location       = field.location;
       var this_category       = field.category;
-      var this_sub_category   = field.this_sub_category;
+      var this_sub_category   = field.sub_category;
      
       var this_short_info     = field.short_info;
+      var this_info           = field.info;
+      
       var this_imgbase64      = field.base64;
      
       var image = new Image();
@@ -123,7 +126,7 @@ $.getJSON(url,function(resulty){
       $("#listview").append(image);
      
      
-     $("#listview").append(i+" : "+this_address+" ("+this_short_info+")");
+     $("#listview").append(i+" : "+this_infoID+" ("+this_info+")");
      });
      
 
@@ -286,7 +289,7 @@ $(document).ready(function() {
                   */
                  $("#TableData").append("<tr><td>"); 
                  $("#TableData").append(image);
-                 $("#TableData").append("</td><td>"+results.rows.item(i).venue+" (" + results.rows.item(i).address+")</td><td>"+results.rows.item(i).short_info+" and " +results.rows.item(i).sub_category+"</td></tr>"); 
+                 $("#TableData").append("</td><td>"+results.rows.item(i).venue+" (" + results.rows.item(i).infoID+")</td><td>"+results.rows.item(i).info+" and " +results.rows.item(i).category+"</td></tr>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
