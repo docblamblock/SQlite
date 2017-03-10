@@ -25,7 +25,7 @@ function createTable()
 
    function saveToDb(item, index) {
     
-    demoP.innerHTML = demoP.innerHTML + "Saving:  " + item.infoID + "  (" + item.info + ")<br>";
+    //demoP.innerHTML = demoP.innerHTML + "Saving:  " + item.infoID + "  (" + item.info + ")<br>";
     
     
     
@@ -64,16 +64,17 @@ function createTable()
             
                                });   // end of myDB.transaction
          
-                 
-    
-     
-    
-    
-    
+   
     
      
 }  
  
+ 
+ function open_this_info(var1)
+ {
+ alert("message: " + var1);
+ 
+ }
 
 
 var myDB;
@@ -120,11 +121,12 @@ $.getJSON(url,function(resulty){
       
       var this_imgbase64      = field.base64;
      
+      /*
       var image = new Image();
       image.src = this_imgbase64;
       image.width = 50;
-      //$("#listview").append(image);
-     
+      $("#listview").append(image);
+      */
      
      //$("#listview").append(i+" : "+this_infoID+" ("+this_info+")");
      });
@@ -289,7 +291,7 @@ $(document).ready(function() {
                   */
                  $("#TableData").append("<tr><td>"); 
                  $("#TableData").append(image);
-                 $("#TableData").append("</td><td>"+results.rows.item(i).venue+" (" + results.rows.item(i).infoID+")</td><td>"+results.rows.item(i).info+" and " +results.rows.item(i).category+"</td></tr>"); 
+                 $("#TableData").append("</td><td><a href='' onClick='open_this_info("toot");'>"+results.rows.item(i).venue+"</a> (" + results.rows.item(i).infoID+")</td><td>"+results.rows.item(i).address+"</td></tr>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
