@@ -28,6 +28,10 @@ alert("status="+this_var);
 
 }
 
+
+
+
+
 function createTable() 
 {   
 
@@ -182,7 +186,7 @@ function getPROC ()
  
  var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=150";
 
-
+status_bar(1);
 
 
     
@@ -232,11 +236,12 @@ proc_array = $.map(resulty, function(value, index) {
 // create a table if it doesn't exist
 
 
-status_bar(1);
+
 createTable();
 
 
-proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
+
+//proc_array.forEach(saveToDb);    // now insert each object in the array into the database separately 
                                    // i.e. if there are 10 objects then saveToDb is called 10 times.  
 
 
