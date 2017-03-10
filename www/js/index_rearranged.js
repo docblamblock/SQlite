@@ -102,8 +102,8 @@ myDB.transaction(function(transaction) {
               }, null);
             });
 
-alert("returning this time: " + results.rows.item(i).time_of_last_update);
-return(results.rows.item(i).time_of_last_update);
+alert("returning this time: " + db_last_update);
+return(db_last_update);
 
  
 
