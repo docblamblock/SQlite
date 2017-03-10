@@ -79,13 +79,15 @@ myDB.transaction(function(transaction) {
             
     //$("#listview").append(image);
             
-            
+                 alert("In the read db loop");
                  
                 
                 
                  
                  for (i = 0; i < len; i++){
                  
+                 
+                 alert("In the read db function");
                  
                  var db_last_update = results.rows.item(i).desc;
                  
