@@ -495,7 +495,7 @@ function function3()
                  for (i = 0; i < len; i++){
              
                  
-                 $("#myconsole").append('<br>Table result: ' + results.rows.item(i).table_name);
+                 $("#myconsole").append('<br>Table result: ' + results.rows.item(i).name);
                     
                  }
               }, null);
@@ -717,7 +717,7 @@ $(document).ready(function() {
 
 
 function onDeviceReady() {
-    alert("Device is Ready time = " +seconds);    
+    //alert("Device is Ready time = " +seconds);    
     
     $("#myconsole").append("Device is Ready time = " +seconds);
 
