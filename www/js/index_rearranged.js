@@ -385,7 +385,7 @@ var networkState;
 
 function checkConnection() {
     
-    /*
+  
     var networkState = navigator.connection.type;
 
    
@@ -405,7 +405,7 @@ function checkConnection() {
     // if we are connected then 
     
     return networkState;
-    */
+ 
     
 }
 
@@ -680,6 +680,24 @@ function onDeviceReady() {
     alert("Device is Ready");    
 
 
+if (checkConnection() == "none" ) {
+        connectionStatus = 'offline'; 
+    } else {
+        connectionStatus = 'online';
+        
+        $("#myconsole").append('<br>Network ('+ networkState+')<br>');
+
+        // get todays date
+        
+        
+        //alert("going to getPROC now");
+
+        //getPROC();
+        
+        
+  
+
+
 $(function(){
     function1().done(function(){
     
@@ -694,7 +712,7 @@ $(function(){
     });
 });
 
-
+       }
 
 
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
