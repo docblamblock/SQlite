@@ -507,10 +507,14 @@ function function3()
                     $("#myconsole").append('<br>Last Update table exists: ' + last_update_table_exists);
                     }
                  }
+                
+                
+                 $("#myconsole").append('Task Wan (1) in function3 is done!');
+              dfrd3.resolve(); 
+                 
               }, null);
               
-              $("#myconsole").append('task 1 in function3 is done!');
-              dfrd3.resolve();
+             
               
             });
                  
