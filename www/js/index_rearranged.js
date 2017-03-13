@@ -259,7 +259,37 @@ var objlength;
 var proc_array =[];
 var resulty=[];
 
+function getPROC_new()
 
+{
+
+var dfrd3 = $.Deferred();
+    
+        
+        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15";
+
+        var jsonPromise = $.getJSON(url);
+        
+        jsonPromise.done(function(data) {
+        console.log('jsonPromise is done!'+ data[1].venue);
+        $("#myconsole").append('<br>jsonPromise is done!'+ data[1].venue);
+        
+        console.log(data);
+        console.log('task 1 in getPROC is done!');
+        
+        proc_array = $.map(data, function(value, index) {
+        return [value];
+            });
+        
+        dfrd3.resolve();
+         });
+      
+
+    return dfrd3.promise();
+
+
+
+}
 
 
 function getPROC ()
@@ -349,13 +379,13 @@ proc_array.forEach(saveToDb);    // now insert each object in the array into the
 
 
 
-
+var networkState;
 
 
 
 function checkConnection() {
     
-    
+    /*
     var networkState = navigator.connection.type;
 
    
@@ -375,7 +405,7 @@ function checkConnection() {
     // if we are connected then 
     
     return networkState;
-    
+    */
     
 }
 
@@ -387,15 +417,42 @@ function function1(){
 
     setTimeout(function(){
         // doing async stuff
-        $("#myconsole").append('task 1 in function1 is done!');
+        
+        networkState = navigator.connection.type;
+
+   
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+    
+        alert('Connection type: ' + states[networkState]);
+        
+        // if we are connected then 
+        
+        return networkState;
+        
+        
+        $("#myconsole").append('task 1 in function1 is done!' + networkState);
         dfrd1.resolve();
     }, 1000);
 
     setTimeout(function(){
         // doing more async stuff
+        
         $("#myconsole").append('task 2 in function1 is done!');
         dfrd2.resolve();
     }, 750);
+    
+    
+    
+    
 
     return $.when(dfrd1, dfrd2).done(function(){
         $("#myconsole").append('both tasks in function1 are done');
@@ -625,8 +682,10 @@ function onDeviceReady() {
 
 $(function(){
     function1().done(function(){
+    
+    
         // function1 is done, we can now call function2
-        $("#myconsole").append('<br>function 1 is done<br>');
+        $("#myconsole").append('<br>function 1 is done ('+ networkState+')<br>');
 
         function2().done(function(){
             //function2 is done
