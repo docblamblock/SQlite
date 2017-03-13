@@ -5,6 +5,10 @@
 demoP = document.getElementById("demo");
 var proc_array =[];
 
+ var d = new Date();
+document.getElementById("date").innerHTML = d;    
+var seconds = d.getTime() / 1000;
+
 
 function status_bar(this_var)
 {
@@ -677,8 +681,9 @@ $(document).ready(function() {
 
 
 function onDeviceReady() {
-    alert("Device is Ready");    
-
+    alert("Device is Ready time = " +seconds);    
+    
+    $("#myconsole").append("Device is Ready time = " +seconds);
 
 if (checkConnection() == "none" ) {
         connectionStatus = 'offline'; 
@@ -736,25 +741,9 @@ lastUpdate = function(timeSuccess, getLastUpdateTime()).then(function() {
 
 
 
-alert("Time is now " + lastUpdate);  
+//alert("Time is now " + lastUpdate);  
 
 
-
-    if (checkConnection() == "none" ) {
-        connectionStatus = 'offline'; 
-    } else {
-        connectionStatus = 'online';
-        
-        
-        // get todays date
-        
-        
-        //alert("going to getPROC now");
-
-        //getPROC();
-        
-        
-    }
 
 
 
