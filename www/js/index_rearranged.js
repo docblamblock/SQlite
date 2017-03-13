@@ -436,7 +436,7 @@ function function1(){
         
         // if we are connected then 
         
-        return networkState;
+        
         
         
         $("#myconsole").append('task 1 in function1 is done!' + networkState);
@@ -697,13 +697,6 @@ $(function(){
 
 
 
-function timeSuccess()
-{
- alert("timeSuccess");
-}
-
-
-
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 var lastUpdate;
@@ -738,9 +731,9 @@ alert("Time is now " + lastUpdate);
         // get todays date
         
         
-        alert("going to getPROC now");
+        //alert("going to getPROC now");
 
-        getPROC();
+        //getPROC();
         
         
     }
