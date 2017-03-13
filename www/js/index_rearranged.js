@@ -482,7 +482,7 @@ function function3()
              myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
               function(tx, result) {
-                  $("#myconsole").append("Table created successfully. Element="+proc_array[1].venue);
+                  $("#myconsole").append("Table created successfully. Element=");
               }, 
               function(error) {
                     $("#myconsole").append("Error occurred while creating the table.");
@@ -711,7 +711,10 @@ function onDeviceReady() {
 
 if (checkConnection() == "none" ) {
         connectionStatus = 'offline'; 
-    } else {
+    } 
+    
+    
+else {
         connectionStatus = 'online';
         
         $("#myconsole").append('<br>Status: ('+ connectionStatus+')<br>');
@@ -724,6 +727,7 @@ if (checkConnection() == "none" ) {
         //getPROC();
         
         
+myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
   
 
 
@@ -740,7 +744,7 @@ $(function(){
             
            function3().done(function(){
             //function3 is done
-            $("#myconsole").append('function3 is done!');
+            $("#myconsole").append('function3 is deanta!');
         });
             
             
@@ -753,7 +757,6 @@ $(function(){
        }
 
 
-myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 
 var lastUpdate;
 
