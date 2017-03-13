@@ -407,7 +407,7 @@ function checkConnection() {
     states[Connection.CELL]     = 'Cell generic connection';
     states[Connection.NONE]     = 'No network connection';
 
-    alert('Connection type: ' + states[networkState]);
+    //alert('Connection type: ' + states[networkState]);
     
     // if we are connected then 
     
@@ -439,7 +439,7 @@ function function1(){
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';
     
-        alert('Connection type: ' + states[networkState]);
+        //alert('Connection type: ' + states[networkState]);
         
         // if we are connected then 
         
@@ -467,7 +467,7 @@ function function1(){
     }).promise();
 }
 
-function function2(){
+function function3(){
     var dfrd1 = $.Deferred();
     setTimeout(function(){
         // doing async stuff
@@ -479,7 +479,7 @@ function function2(){
 
 var last_update_table_exists = "";
 
-function function3()
+function function2()
 {
   var dfrd3 = $.Deferred();
     setTimeout(function(){
@@ -503,7 +503,7 @@ function function3()
                  
                  if(this_string.localeCompare(this_table)==0)
                     {
-                    last_update_table_exists = "yes";
+                    last_update_table_exists = 1;
                     $("#myconsole").append('<br>Last Update table exists: ' + last_update_table_exists);
                     }
                  }
@@ -767,9 +767,25 @@ $(function(){
         // function1 is done, we can now call function2
         $("#myconsole").append('<br>function 1 is done ('+ networkState+')<br>');
 
-        function2().done(function(){
+        function2().done(function(){    // checks if last_update_table exists
             //function2 is done
-            $("#myconsole").append('function2 is done!');
+            $("#myconsole").append('function2 is deanta! last_update_table_exists=' + last_update_table_exists);
+            
+            // if last_update_table is not = 1
+            // then create the table
+            
+            if (last_update_table_exists==1)
+            {
+            // do nothing
+            }
+            else
+            {
+            $("#myconsole").append('Table does not exist. Must create');
+            
+            }
+            
+            
+            
             
            function3().done(function(){
             //function3 is done
