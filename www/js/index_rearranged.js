@@ -474,7 +474,17 @@ function function2(){
     return dfrd1.promise();
 }
 
+function function3()
+{
+  var dfrd3 = $.Deferred();
+    setTimeout(function(){
+        // doing async stuff
+        $("#myconsole").append('task 1 in function3 is done!');
+        dfrd3.resolve();
+    }, 100);
+    return dfrd3.promise();
 
+}
 
 
 /* 
@@ -713,6 +723,15 @@ $(function(){
         function2().done(function(){
             //function2 is done
             $("#myconsole").append('function2 is done!');
+            
+           function3().done(function(){
+            //function3 is done
+            $("#myconsole").append('function3 is done!');
+        });
+            
+            
+            
+            
         });
     });
 });
