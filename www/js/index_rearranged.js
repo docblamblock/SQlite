@@ -477,6 +477,8 @@ function function2(){
     return dfrd1.promise();
 }
 
+var last_update_table_exists = "";
+
 function function3()
 {
   var dfrd3 = $.Deferred();
@@ -494,9 +496,16 @@ function function3()
                  $("#myconsole").append('len='+len);
                  for (i = 0; i < len; i++){
              
+                 var this_string = results.rows.item(i).name;
+                 var this_table = 'last_update_table';
                  
                  $("#myconsole").append('<br>Table result: ' + results.rows.item(i).name);
-                    
+                 
+                 if(this_string.localeCompare(this_table)==0)
+                    {
+                    last_update_table_exists = "yes";
+                    $("#myconsole").append('<br>Last Update table exists: ' + last_update_table_exists);
+                    }
                  }
               }, null);
             });
@@ -756,7 +765,7 @@ $(function(){
             
            function3().done(function(){
             //function3 is done
-            $("#myconsole").append('function3 is deanta!');
+            $("#myconsole").append('function3 is deanta! last_update_table_exists=' + last_update_table_exists);
         });
             
             
