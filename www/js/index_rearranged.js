@@ -685,7 +685,7 @@ if (checkConnection() == "none" ) {
     } else {
         connectionStatus = 'online';
         
-        $("#myconsole").append('<br>Network ('+ networkState+')<br>');
+        $("#myconsole").append('<br>Status: ('+ connectionStatus+')<br>');
 
         // get todays date
         
