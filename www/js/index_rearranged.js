@@ -33,6 +33,35 @@ var number = this_var;
 }
 
 
+function createLastUpdateTable()
+
+{
+
+ var dfrd4 = $.Deferred();
+
+myDB.transaction(function(transaction) {
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text)', [],
+              function(tx, result) {
+                  alert("Table last_update created successfully");
+                   $("#myconsole").append('Lastupdate Table created successfully!');
+                  
+              }, 
+              function(error) {
+                    alert("Error occurred while creating the lastupdate table.");
+              });
+              dfrd4.resolve();
+              
+          });
+          
+          
+          
+  
+      
+
+    return dfrd4.promise();
+          
+          
+}
 
 
 
@@ -135,6 +164,9 @@ function createTable()
               function(error) {
                     alert("Error occurred while creating the table.");
               });
+              
+              
+              
           });
           
         
@@ -527,7 +559,9 @@ function function2()
                 
                
                
-               // if the table doesnt exist we need to create it
+               // if the last_update_table doesnt exist we need to create it
+              
+               
                 
                // if the table does exist then we need to check the last time it was updated 
                 
@@ -810,7 +844,7 @@ $(function(){
             else
             {
             $("#myconsole").append('Table does not exist. Must create');
-            
+            createLastUpdateTable();  // surround this with logic
             }
             
             
@@ -818,7 +852,7 @@ $(function(){
             
            function3().done(function(){
             //function3 is done
-            $("#myconsole").append('function3 is deanta! last_update_table_exists=' + last_update_table_exists);
+            $("#myconsole").append('function3 is deanta!');
         });
             
             
