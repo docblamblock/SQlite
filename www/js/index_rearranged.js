@@ -478,7 +478,21 @@ function function3()
 {
   var dfrd3 = $.Deferred();
     setTimeout(function(){
-        // doing async stuff
+        
+             myDB.transaction(function(transaction) {
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
+              function(tx, result) {
+                  $("#myconsole").append("Table created successfully. Element="+proc_array[1].venue);
+              }, 
+              function(error) {
+                    $("#myconsole").append("Error occurred while creating the table.");
+              });
+          });
+                 
+        
+        
+        
+        
         $("#myconsole").append('task 1 in function3 is done!');
         dfrd3.resolve();
     }, 100);
