@@ -468,13 +468,30 @@ function function1(){
 }
 
 function function3(){
-    var dfrd1 = $.Deferred();
-    setTimeout(function(){
-        // doing async stuff
-        $("#myconsole").append('task 1 in function2 is done!');
-        dfrd1.resolve();
-    }, 2000);
-    return dfrd1.promise();
+    var dfrd3 = $.Deferred();
+    
+        
+        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15";
+
+        var jsonPromise = $.getJSON(url);
+        
+        jsonPromise.done(function(data) {
+        console.log('jsonPromise is done!'+ data[1].venue);
+        $("#myconsole").append('<br>jsonPromise is done!'+ data[1].venue);
+        
+        console.log(data);
+        console.log('task 1 in getPROC is done!');
+        
+        proc_array = $.map(data, function(value, index) {
+        return [value];
+            });
+        
+        dfrd3.resolve();
+         });
+      
+
+    return dfrd3.promise();
+
 }
 
 var last_update_table_exists = "";
@@ -507,6 +524,18 @@ function function2()
                     $("#myconsole").append('<br>Last Update table exists: ' + last_update_table_exists);
                     }
                  }
+                
+               
+               
+               // if the table doesnt exist we need to create it
+                
+               // if the table does exist then we need to check the last time it was updated 
+                
+               // this function needs to be like function1 in the example where two tasks need to be completed BEFORE the promise gets returned 
+                
+                
+                
+                
                 
                 
                  $("#myconsole").append('Task Wan (1) in function3 is done!');
