@@ -1,9 +1,9 @@
 
 
 
-    
+                              
 demoP = document.getElementById("demo");
-
+var proc_array =[];
 
 
 function status_bar(this_var)
@@ -306,7 +306,7 @@ $("#listview").append("<br>--------- / end of getPROC() -----<br>");
 
 objlength = Object.keys(resulty).length;     // get number of elements
 //alert("objlength="+objlength);
-
+                            
 
 proc_array = $.map(resulty, function(value, index) {
     return [value];
@@ -377,6 +377,40 @@ function checkConnection() {
     return networkState;
     
     
+}
+
+
+
+function function1(){
+    var dfrd1 = $.Deferred();
+    var dfrd2= $.Deferred();
+
+    setTimeout(function(){
+        // doing async stuff
+        $("#myconsole").append('task 1 in function1 is done!');
+        dfrd1.resolve();
+    }, 1000);
+
+    setTimeout(function(){
+        // doing more async stuff
+        $("#myconsole").append('task 2 in function1 is done!');
+        dfrd2.resolve();
+    }, 750);
+
+    return $.when(dfrd1, dfrd2).done(function(){
+        $("#myconsole").append('both tasks in function1 are done');
+        // Both asyncs tasks are done
+    }).promise();
+}
+
+function function2(){
+    var dfrd1 = $.Deferred();
+    setTimeout(function(){
+        // doing async stuff
+        $("#myconsole").append('task 1 in function2 is done!');
+        dfrd1.resolve();
+    }, 2000);
+    return dfrd1.promise();
 }
 
 
@@ -587,6 +621,21 @@ $(document).ready(function() {
 
 function onDeviceReady() {
     alert("Device is Ready");    
+
+
+$(function(){
+    function1().done(function(){
+        // function1 is done, we can now call function2
+        $("#myconsole").append('<br>function 1 is done<br>');
+
+        function2().done(function(){
+            //function2 is done
+            $("#myconsole").append('function2 is done!');
+        });
+    });
+});
+
+
 
 
 function timeSuccess()
