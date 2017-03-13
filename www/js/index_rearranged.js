@@ -508,14 +508,18 @@ function function3()
                     }
                  }
               }, null);
+              
+              $("#myconsole").append('task 1 in function3 is done!');
+              dfrd3.resolve();
+              
             });
                  
         
         
         
         
-        $("#myconsole").append('task 1 in function3 is done!');
-        dfrd3.resolve();
+        
+        
     }, 100);
     return dfrd3.promise();
 
