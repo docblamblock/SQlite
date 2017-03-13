@@ -121,6 +121,9 @@ myDB.transaction(function(transaction) {
 
 
 
+
+
+
 function createTable() 
 {   
 
@@ -479,15 +482,24 @@ function function3()
   var dfrd3 = $.Deferred();
     setTimeout(function(){
         
-             myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
-              function(tx, result) {
-                  $("#myconsole").append("Table created successfully. Element=");
-              }, 
-              function(error) {
-                    $("#myconsole").append("Error occurred while creating the table.");
-              });
-          });
+          myDB.transaction(function(transaction) {
+          
+          transaction.executeSql('SELECT name FROM sqlite_master WHERE type=?', ['table'], function (tx, results) { 
+            
+            
+    //$("#listview").append(image);
+            
+            
+                 var len = results.rows.length, i;
+                 $("#myconsole").append('len='+len);
+                 for (i = 0; i < len; i++){
+             
+                 
+                 $("#myconsole").append('<br>Table result: ' + results.rows.item(i).table_name);
+                    
+                 }
+              }, null);
+            });
                  
         
         
