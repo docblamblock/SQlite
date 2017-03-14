@@ -9,7 +9,12 @@ var proc_array =[];
 document.getElementById("date").innerHTML = d;    
 var seconds = d.getTime() / 1000;
 
+var timeOfLastUpdate;
+
 var createLastUpdateTable_success =0;
+
+
+
 
 function status_bar(this_var)
 {
@@ -79,6 +84,7 @@ function insertLastUpdateTime()
 
         // doing async stuff
    
+      timeOfLastUpdate = seconds; // global variable
      
         myDB.transaction(function(transaction) {
           var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
@@ -112,15 +118,15 @@ function updateLastUpdateTime()
 
 
  var dfrd5 = $.Deferred();
- var zero = 1;
+ var one = 1;  // time will be kept in the first row with id=1
 
         // doing async stuff
-   
+        timeOfLastUpdate = seconds; 
      
         myDB.transaction(function(transaction) {
           var executeQuery = "UPDATE last_update_table set time_of_last_update=? where id=?";             
           //                  UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
-        transaction.executeSql(executeQuery, [seconds, zero]
+        transaction.executeSql(executeQuery, [seconds, one]
             , function(tx, result) {
                   
                 $("#myconsole").append('<p>Updated the last_update_table with "+ seconds +"</p>');
@@ -152,93 +158,6 @@ function updateLastUpdateTime()
     
 
 
-
-
-
-
-function getLastUpdateTime()      // puts current time into the database
- 
- {
-     var d = new Date();
-document.getElementById("date").innerHTML = d;    
-var seconds = d.getTime() / 1000;
-document.getElementById("date").append("  now = Seconds"+seconds);
-
-
-//var dummy = "testing one two three";
-
- /*
-myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text)', [],
-              function(tx, result) {
-                  alert("Table last_update created successfully");
-              }, 
-              function(error) {
-                    alert("Error occurred while creating the table.");
-              });
-          });
- 
-   
-        
-myDB.transaction(function(transaction) {
-     
-        var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
-        
-        transaction.executeSql(executeQuery, [seconds]
-            , function(tx, result) {
-                alert('Inserted: '+seconds);
-            },
-            function(error){
-                 alert('Error occurred trying to insert time: '+seconds); 
-            });
-            
-           
-            });   // end of myDB.transaction
-         
-         */
-         
-         // see if there's an last update time in the database
-         // if there is then return it
-  
- 
- /* 
- var db_last_update;        
-
- db_last_update = "set by me";
-
- myDB.transaction( function(transaction) {
-            
-          
-            transaction.executeSql('SELECT * FROM last_update_table', [], function (tx, results) { 
-            
-            
-    //$("#listview").append(image);
-            
-                 alert("In the read db loop");
-                 
-                
-                 var len = results.rows.length, i;
-                 
-                 for (i = 0; i < len; i++){
-                 
-                 
-                 alert("In the read db function i="+i+" value: " + results.rows.item(i).time_of_last_update);
-                 
-                 db_last_update = results.rows.item(i).time_of_last_update;
-                 
-                 $("#lastUpdate").append("Last Update in dB: " + db_last_update); 
-           
-                 }
-              }, null);
-            });
-
-
- return (db_last_update);
- 
-   */
-
-
- }
 
 
 
@@ -367,7 +286,45 @@ alert("Going to show infoID="+display_this_infoID);
 }// end of display this infoID
 
 
+function getLastUpdatetime()
 
+{
+
+var dfrd7 = $.Deferred();
+
+$("#myconsole").append("<p>Inside getLastUpdatetime()</p>");
+           
+           
+         
+            $("#TableData").html("");
+            myDB.transaction(function(transaction) {
+     
+            
+            transaction.executeSql('SELECT * FROM last_update_table', [], function (tx, results) { 
+            
+            
+            
+            $("#myconsole").append("<p>Inside the getLastUpdatetime transaction</p>");
+            
+            
+                 var len = results.rows.length, i;
+                 $("#rowCount").html(len);
+                 for (i = 0; i < len; i++){
+                 
+                 timeOfLastUpdate = results.rows.item(i).time_of_last_update; 
+                                                              
+                 $("#myconsole").append("getLastUpdatetime loop: "+ results.rows.item(i).time_of_last_update); 
+                 
+                 dfrd5.resolve();   
+                 }
+              }, null);
+
+
+
+ });       
+
+return dfrd5.promise();
+}
 
 
 
@@ -529,7 +486,7 @@ proc_array.forEach(saveToDb);    // now insert each object in the array into the
  }).then(function() {
   status_bar(0);
 });   
-
+  
 
 
 
@@ -629,10 +586,14 @@ function function1(){
 
 
 function function3(){
+    
+    
     var dfrd3 = $.Deferred();
     
         
-        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15";
+        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15&lastUpdate="+lastUpdate;
+
+        console.log('url='+url);
 
         var jsonPromise = $.getJSON(url);
         
@@ -707,7 +668,7 @@ function function2()                // check if last_update_table exists
                 
                 
                 
-                 $("#myconsole").append('Task Wan (1) in function3 is done!');
+                 $("#myconsole").append('Task Wan (1) in function2 is done!');
               dfrd3.resolve(); 
                  
               }, null);
@@ -1016,6 +977,8 @@ $(function(){
                      $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
                      
                      display_last_update_table();     
+                     getLastUpdatetime();
+                     
                       //function4 is done
                       
                        });    // end of function4
