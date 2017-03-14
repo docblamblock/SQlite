@@ -351,7 +351,7 @@ alert("Going to show last update table");
                  $("#rowCount").html(len);
                  for (i = 0; i < len; i++){
                                                               
-                 $("#TableData").append("<tr><td>something sdfsdfdsf dsf sdf sdf item:"+ results.rows.item(i).time_of_last_update); 
+                 $("#TableData").append("<tr><td>id="+results.rows.item(i).id+" item:"+ results.rows.item(i).time_of_last_update); 
                  
                 // $("#TableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update); 
                  $("#TableData").append("</td></tr>");
