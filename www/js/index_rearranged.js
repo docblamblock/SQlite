@@ -99,6 +99,10 @@ setTimeout(function(){
                 
         
         $("#myconsole").append('<br><br>finished waiting in insert<br><br>');
+        
+        
+        
+        
         dfrd5.resolve();
     }, 4000);
 
@@ -919,7 +923,7 @@ $(function(){
             
             $("#myconsole").append('<p>function3-JSON is done.</p>');
             // JSON call
-           insertLastUpdateTime()().done(function(){
+           insertLastUpdateTime().done(function(){
            
            $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
            
