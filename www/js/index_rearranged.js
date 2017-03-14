@@ -227,7 +227,7 @@ function saveToDb(item, index) {
                 $("#myconsole").append("<p>Done: " + this_venue + "</p>"); 
             },
             function(error){
-                 $("#myconsole").append("<p>Error: " + this_venue + " " + error + "</p>"); 
+                 $("#myconsole").append("<p>Error: " + this_venue + " " + error.message + "</p>"); 
             });
             
            
