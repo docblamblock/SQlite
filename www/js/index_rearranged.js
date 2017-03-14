@@ -37,25 +37,27 @@ function createLastUpdateTable()
 
 {
 
- var dfrd4 = $.Deferred();
+ var dfrd6 = $.Deferred();
 
 myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text)', [],
               function(tx, result) {
                   //alert("Table last_update created successfully");
                    $("#myconsole").append('<p>Last update Table created successfully (or it already exists!</p>');
+                   dfrd6.resolve();
                   
               }, 
               function(error) {
                     $("#myconsole").append("<p>Error occurred while creating the lastupdate table.</p>");
               });
-              dfrd4.resolve();
+              
+              
               
           });
           
      
 
-    return dfrd4.promise();
+    return dfrd6.promise();
     
    
     
@@ -532,6 +534,8 @@ function function1(){
         // Both asyncs tasks are done
     }).promise();
 }
+
+
 
 function function3(){
     var dfrd3 = $.Deferred();
