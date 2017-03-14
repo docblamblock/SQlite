@@ -807,9 +807,7 @@ $("#showLastUpdateTable").click(function(){
             display_last_update_table();
          
                     
-                 }
-              }, null);
-            });
+                 });
             
                   
       
