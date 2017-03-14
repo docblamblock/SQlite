@@ -96,6 +96,21 @@ myDB.transaction(function(transaction) {
 setTimeout(function(){
         // doing async stuff
         
+        myDB.transaction(function(transaction) {
+          var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
+        
+        transaction.executeSql(executeQuery, [seconds]
+            , function(tx, result) {
+                  
+                $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
+            },
+            function(error){
+                 $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'</p>'); 
+            });
+            
+            
+           
+            });   // end of myDB.transaction
                 
         
         $("#myconsole").append('<br><br>finished waiting in insert<br><br>');
