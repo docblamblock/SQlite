@@ -201,6 +201,8 @@ function saveToDb(item, index) {
     
     var this_infoID             = item.infoID; 
     var this_venue              = item.venue;            // venue is the name of the element on the JSON feed from PROC
+    
+    /*
     var this_address            = item.address;
     var this_short_info         = item.short_info;
     var this_info               = item.info;
@@ -211,7 +213,7 @@ function saveToDb(item, index) {
     var this_sub_category       = item.sub_category;
     
     var this_imgbase64          = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
-    
+              */
     
     //$("#listview").append(image);
     
@@ -220,11 +222,14 @@ function saveToDb(item, index) {
       
        myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)";             
+        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue) VALUES (?,?)";             
         
-        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
+        //transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
+        
+        transaction.executeSql(executeQuery, [this_infoID, this_venue]
+        
             , function(tx, result) {
-                $("#myconsole").append("<p>Done: " + this_venue + "</p>"); 
+                $("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
             },
             function(tx, err){
                  $("#myconsole").append("<p>Error: " + this_venue + " " + err.message + " Code:" + err.code + "</p>"); 
