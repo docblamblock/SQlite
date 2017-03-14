@@ -103,13 +103,14 @@ setTimeout(function(){
             , function(tx, result) {
                   
                 $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
+                 dfrd5.resolve();
             },
             function(error){
                  $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'</p>'); 
             });
             
             
-        dfrd5.resolve();
+       
            
             });   // end of myDB.transaction
                 
