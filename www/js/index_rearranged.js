@@ -74,13 +74,13 @@ function insertLastUpdateTime()
  var dfrd5 = $.Deferred();
 
 var seconds = "123";
-
+/*
 myDB.transaction(function(transaction) {
           var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
         
         transaction.executeSql(executeQuery, [seconds]
             , function(tx, result) {
-                  dfrd5.resolve();
+                  
                 $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
             },
             function(error){
@@ -91,7 +91,21 @@ myDB.transaction(function(transaction) {
            
             });   // end of myDB.transaction
           
-         
+*/         
+
+setTimeout(function(){
+        // doing async stuff
+        
+                
+        
+        $("#myconsole").append('<br><br>finished waiting in insert<br><br>');
+        dfrd5.resolve();
+    }, 4000);
+
+
+
+
+
 
     return dfrd5.promise();
     
