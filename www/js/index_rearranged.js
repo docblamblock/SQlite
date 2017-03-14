@@ -344,14 +344,14 @@ alert("Going to show last update table");
             transaction.executeSql('SELECT * FROM last_update_table', [], function (tx, results) { 
             
             
-    //$("#listview").append(image);
+            $("#myconsole").append("Inside the last_update_table transaction");
             
             
                  var len = results.rows.length, i;
                  $("#rowCount").html(len);
                  for (i = 0; i < len; i++){
                                                               
-                 $("#TableData").append("<tr><td>"); 
+                 $("#TableData").append("<tr><td>something sdfsdfdsf dsf sdf sdf "); 
                  
                 // $("#TableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update); 
                  $("#TableData").append("</td></tr>");
