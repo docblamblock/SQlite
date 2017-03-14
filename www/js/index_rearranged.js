@@ -109,6 +109,7 @@ setTimeout(function(){
             });
             
             
+        dfrd5.resolve();
            
             });   // end of myDB.transaction
                 
@@ -118,7 +119,6 @@ setTimeout(function(){
         
         
         
-        dfrd5.resolve();
     }, 4000);
 
 
