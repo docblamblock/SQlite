@@ -75,7 +75,7 @@ function insertLastUpdateTime()
 {
 
  var dfrd5 = $.Deferred();
- var zero = 1;
+
 
         // doing async stuff
    
@@ -112,7 +112,7 @@ function updateLastUpdateTime()
 
 
  var dfrd5 = $.Deferred();
- var zero = 0;
+ var zero = 1;
 
         // doing async stuff
    
