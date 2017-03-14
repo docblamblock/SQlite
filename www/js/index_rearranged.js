@@ -224,10 +224,10 @@ function saveToDb(item, index) {
         
         transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
             , function(tx, result) {
-                 //count +=1;//alert('Inserted: '+sqltitle);
+                $("#myconsole").append("<p>Done: " + this_venue + "</p>"); 
             },
             function(error){
-                 //alert('Error occurred: '+sqltitle); 
+                 $("#myconsole").append("<p>Error: " + this_venue + "</p>"); 
             });
             
            
