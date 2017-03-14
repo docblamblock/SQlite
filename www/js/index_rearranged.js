@@ -9,6 +9,7 @@ var proc_array =[];
 document.getElementById("date").innerHTML = d;    
 var seconds = d.getTime() / 1000;
 
+var createLastUpdateTable_success =0;
 
 function status_bar(this_var)
 {
@@ -33,6 +34,7 @@ var number = this_var;
 }
 
 
+
 function createLastUpdateTable()
 
 {
@@ -44,6 +46,7 @@ myDB.transaction(function(transaction) {
               function(tx, result) {
                   //alert("Table last_update created successfully");
                    $("#myconsole").append('<p>Last update Table created successfully (or it already exists!</p>');
+                   createLastUpdateTable_success = 1;
                    dfrd6.resolve();
                   
               }, 
@@ -72,14 +75,15 @@ function insertLastUpdateTime()
 {
 
  var dfrd5 = $.Deferred();
-
+ var zero = 0;
 
         // doing async stuff
-        
+   
+     
         myDB.transaction(function(transaction) {
-          var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
-        
-        transaction.executeSql(executeQuery, [seconds]
+          var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?) where id=?";             
+          //                  UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
+        transaction.executeSql(executeQuery, [seconds, zero]
             , function(tx, result) {
                   
                 $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
@@ -98,8 +102,45 @@ function insertLastUpdateTime()
         
         $("#myconsole").append('<br><br>finished waiting in insert<br><br>');
         
+}    
+   
+   
+   
+function updateLastUpdateTime()
+
+{
+
+
+ var dfrd5 = $.Deferred();
+ var zero = 0;
+
+        // doing async stuff
+   
+     
+        myDB.transaction(function(transaction) {
+          var executeQuery = "UPDATE last_update_table set time_of_last_update=? where id=?";             
+          //                  UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
+        transaction.executeSql(executeQuery, [seconds, zero]
+            , function(tx, result) {
+                  
+                $("#myconsole").append('<p>Updated the last_update_table with "+ seconds +"</p>');
+                 dfrd5.resolve();
+            },
+            function(error){
+                 $("#myconsole").append('<p>Error occurred trying to update time: '+seconds+'</p>');
+                  dfrd5.resolve(); 
+            });
+            
+            
+       
+           
+            });   // end of myDB.transaction
+                
         
+        $("#myconsole").append('<br><br>finished waiting in updateLastUpdateTime<br><br>');
         
+
+}        
 
 
 
@@ -351,7 +392,7 @@ alert("Going to show last update table");
                  $("#rowCount").html(len);
                  for (i = 0; i < len; i++){
                                                               
-                 $("#TableData").append("<tr><td>id="+results.rows.item(i).id+" item:"+ results.rows.item(i).time_of_last_update); 
+                 $("#TableData").append("<tr><td>id:"+results.rows.item(i).id+" item:"+ results.rows.item(i).time_of_last_update); 
                  
                 // $("#TableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update); 
                  $("#TableData").append("</td></tr>");
@@ -953,6 +994,7 @@ $(function(){
             {
             $("#myconsole").append('<p>Table does not exist. Must create!</p>');
             createLastUpdateTable();
+            insertLastUpdateTime();
             
             $("#myconsole").append('<p>Created table function is finished</p>');
             
@@ -969,7 +1011,7 @@ $(function(){
             
            // after JSON is done insert the latest update time into last_update_table
             
-           insertLastUpdateTime().done(function(){
+           updateLastUpdateTime().done(function(){
            
            $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
            
