@@ -977,11 +977,19 @@ $(function(){
                      $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
                      
                      display_last_update_table();     
-                     getLastUpdatetime();
                      
-                      //function4 is done
+                     
+                      getLastUpdatetime().done(function(){
+                     
+                     $("#myconsole").append('<p>Finished everything.</p>');
+                     
+                    
+                     
+                    
                       
-                       });    // end of function4
+                       });    // end of function
+                      
+                       });    // end of function
             
          });   // end of function3    
             
