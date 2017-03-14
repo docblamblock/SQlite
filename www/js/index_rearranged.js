@@ -42,25 +42,57 @@ function createLastUpdateTable()
 myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text)', [],
               function(tx, result) {
-                  alert("Table last_update created successfully");
-                   $("#myconsole").append('Lastupdate Table created successfully!');
+                  //alert("Table last_update created successfully");
+                   $("#myconsole").append('<p>Last update Table created successfully (or it already exists!</p>');
                   
               }, 
               function(error) {
-                    alert("Error occurred while creating the lastupdate table.");
+                    $("#myconsole").append("<p>Error occurred while creating the lastupdate table.</p>");
               });
               dfrd4.resolve();
               
           });
           
-          
-          
-  
-      
+     
 
     return dfrd4.promise();
+    
+   
+    
           
           
+}
+
+
+
+function insertLastUpdateTime()
+{
+
+ var dfrd5 = $.Deferred();
+
+var seconds = "123";
+
+myDB.transaction(function(transaction) {
+          var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
+        
+        transaction.executeSql(executeQuery, [seconds]
+            , function(tx, result) {
+                alert('<p>Inserted: '+seconds+' into the last_update_table</p>');
+            },
+            function(error){
+                 alert('Error occurred trying to insert time: '+seconds); 
+            });
+            
+            dfrd5.resolve();
+           
+            });   // end of myDB.transaction
+          
+     
+
+    return dfrd5.promise();
+    
+
+
 }
 
 
@@ -87,7 +119,8 @@ myDB.transaction(function(transaction) {
               });
           });
  
-         
+   
+        
 myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
@@ -108,7 +141,8 @@ myDB.transaction(function(transaction) {
          // see if there's an last update time in the database
          // if there is then return it
   
-  
+ 
+ /* 
  var db_last_update;        
 
  db_last_update = "set by me";
@@ -142,7 +176,7 @@ myDB.transaction(function(transaction) {
 
  return (db_last_update);
  
-
+   */
 
 
  }
@@ -849,13 +883,15 @@ $(function(){
             }
             else
             {
-            $("#myconsole").append('Table does not exist. Must create');
-            createLastUpdateTable(); //.done(function(){
+            $("#myconsole").append('<p>Table does not exist. Must create!</p>');
+            createLastUpdateTable.done(function(){
+            
+            insertLastUpdateTime(); 
             
             $("#myconsole").append('<p>Created table function is finished</p>');
              
             
-           //}); 
+           }); 
             
             }
             
