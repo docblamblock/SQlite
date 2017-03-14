@@ -886,9 +886,11 @@ $(function(){
             $("#myconsole").append('<p>Table does not exist. Must create!</p>');
             createLastUpdateTable.done(function(){
             
-            insertLastUpdateTime(); 
-            
             $("#myconsole").append('<p>Created table function is finished</p>');
+            
+            //insertLastUpdateTime(); 
+            
+            
              
             
            }); 
