@@ -49,6 +49,7 @@ myDB.transaction(function(transaction) {
               }, 
               function(error) {
                     $("#myconsole").append("<p>Error occurred while creating the lastupdate table.</p>");
+                    dfrd6.resolve();
               });
               
               
@@ -888,16 +889,13 @@ $(function(){
             else
             {
             $("#myconsole").append('<p>Table does not exist. Must create!</p>');
-            createLastUpdateTable.done(function(){
+            createLastUpdateTable();
             
             $("#myconsole").append('<p>Created table function is finished</p>');
             
-            //insertLastUpdateTime(); 
-            
-            
-             
-            
-           }); 
+            insertLastUpdateTime(); 
+              
+           
             
             }
             
