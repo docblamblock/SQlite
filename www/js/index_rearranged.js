@@ -199,7 +199,7 @@ function saveToDb(item, index) {
     
     
     
-    var this_infoID             = "1234; 
+    var this_infoID             = 1234; 
     var this_venue              = "venue name";            // venue is the name of the element on the JSON feed from PROC
     
     /*
