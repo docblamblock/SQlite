@@ -202,7 +202,7 @@ function saveToDb(item, index) {
     var this_infoID             = item.infoID; 
     var this_venue              = item.venue;            // venue is the name of the element on the JSON feed from PROC
     
-    /*
+ 
     var this_address            = item.address;
     var this_short_info         = item.short_info;
     var this_info               = item.info;
@@ -213,7 +213,7 @@ function saveToDb(item, index) {
     var this_sub_category       = item.sub_category;
     
     var this_imgbase64          = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
-              */
+             
     
     //$("#listview").append(image);
     
@@ -239,15 +239,15 @@ function saveToDb(item, index) {
             
                                });   // end of myDB.transaction
              */
-             
+             // [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
              
                 var this_title = "soft wired";
    var this_imgbase64 = "set in func";
 
      myDB.transaction(function(transaction) {
-     
-        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
-        transaction.executeSql(executeQuery, [this_venue,this_imgbase64]
+    
+        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, imgbase64) VALUES (?,?,?,?,?)";             
+        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_imgbase64]
             , function(tx, result) {
                  //alert('Inserted: '+title);
             },
