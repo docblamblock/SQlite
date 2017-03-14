@@ -315,13 +315,13 @@ $("#myconsole").append("<p>Inside getLastUpdatetime()</p>");
                                                               
                  $("#myconsole").append("getLastUpdatetime loop: "+ results.rows.item(i).time_of_last_update); 
                  
-                 dfrd5.resolve();   
+                 //dfrd5.resolve();   
                  }
                  dfrd5.resolve();
                  
               }, null);
 
-
+             dfrd5.resolve();
 
  });       
 
