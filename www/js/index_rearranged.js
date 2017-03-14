@@ -93,7 +93,7 @@ myDB.transaction(function(transaction) {
           
 */         
 
-setTimeout(function(){
+
         // doing async stuff
         
         myDB.transaction(function(transaction) {
@@ -106,7 +106,8 @@ setTimeout(function(){
                  dfrd5.resolve();
             },
             function(error){
-                 $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'</p>'); 
+                 $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'</p>');
+                  dfrd5.resolve(); 
             });
             
             
@@ -119,8 +120,7 @@ setTimeout(function(){
         
         
         
-        
-    }, 4000);
+
 
 
 
