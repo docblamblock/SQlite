@@ -80,6 +80,7 @@ myDB.transaction(function(transaction) {
         
         transaction.executeSql(executeQuery, [seconds]
             , function(tx, result) {
+                  dfrd5.resolve();
                 $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
             },
             function(error){
@@ -90,7 +91,7 @@ myDB.transaction(function(transaction) {
            
             });   // end of myDB.transaction
           
-          dfrd5.resolve();
+         
 
     return dfrd5.promise();
     
