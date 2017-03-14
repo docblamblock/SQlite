@@ -288,7 +288,6 @@ alert("Going to show infoID="+display_this_infoID);
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
      
-            //transaction.executeSql('SELECT * FROM phonegap_pro where venue LIKE ?', [kinlay], function (tx, results) {
             
             transaction.executeSql('SELECT * FROM phonegap_pro where infoID = ?', [display_this_infoID], function (tx, results) { 
             
@@ -331,7 +330,46 @@ alert("Going to show infoID="+display_this_infoID);
 
 
 
+ function display_last_update_table()
+{
 
+var display_this_infoID= display_infoID;
+
+alert("Going to show last update table");
+           
+            $("#TableData").html("");
+            myDB.transaction(function(transaction) {
+     
+            
+            transaction.executeSql('SELECT * FROM last_update_table', [], function (tx, results) { 
+            
+            
+    //$("#listview").append(image);
+            
+            
+                 var len = results.rows.length, i;
+                 $("#rowCount").html(len);
+                 for (i = 0; i < len; i++){
+             
+                 /*
+                 var image = new Image();
+                 image.src = results.rows.item(i).desc;
+                 image.width = 50;
+                  */                                                  
+                 $("#LastUpdateTableData").append("<tr><td>"); 
+                 //$("#TableData").append(image);
+                 $("#LastUpdateTableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update+"</td></tr>"); 
+                 
+                    //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
+                    
+                 }
+              }, null);
+
+
+
+ });
+          
+}// end of display this infoID
 
 
 
@@ -717,7 +755,7 @@ $(document).ready(function() {
           
           
           alert("Going to display table..");
-          
+           
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
             
@@ -758,9 +796,22 @@ $(document).ready(function() {
             
           });
                 
+                
+                
+                
+                
       
       
-      
+$("#showLastUpdateTable").click(function(){
+          
+            display_last_update_table();
+         
+                    
+                 }
+              }, null);
+            });
+            
+                  
       
       
       
@@ -899,7 +950,10 @@ $(function(){
             
             if (last_update_table_exists==1)
             {
-            // do nothing
+            // get the last time the database was updated. 
+            
+            
+            
             }
             else
             {
@@ -918,7 +972,9 @@ $(function(){
           function3().done(function(){    // function3   // JSON call
             
             $("#myconsole").append('<p>function3-JSON is done.</p>');
-            // JSON call
+            
+           // after JSON is done insert the latest update time into last_update_table
+            
            insertLastUpdateTime().done(function(){
            
            $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
