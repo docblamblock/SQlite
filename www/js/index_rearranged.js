@@ -249,7 +249,7 @@ function saveToDb(item, index) {
         var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, imgbase64) VALUES (?,?,?,?,?)";             
         transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_imgbase64]
             , function(tx, result) {
-                 $("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
+                 //$("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
             },
             function(error){
                  //alert('Error occurred: '+title); 
