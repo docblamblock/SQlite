@@ -556,14 +556,18 @@ function function2()                // check if last_update_table exists
                     last_update_table_exists = 1;
                     $("#myconsole").append('<br>Last Update table exists: ' + last_update_table_exists);
                     }
-                 }
-                else
-                {
-               
-               
-               // if the last_update_table doesnt exist we need to create it
-                }
-               
+                    else
+                    {
+                    $("#myconsole").append('<p>Last Update table does not exists: ' + last_update_table_exists);
+                   
+                   // if the last_update_table doesnt exist we need to create it
+                    }
+                   
+                    
+                    
+                    
+                 }  // end of for loop
+                
                 
                // if the table does exist then we need to check the last time it was updated 
                 
@@ -846,12 +850,12 @@ $(function(){
             else
             {
             $("#myconsole").append('Table does not exist. Must create');
-            createLastUpdateTable.done(function(){
+            createLastUpdateTable(); //.done(function(){
             
             $("#myconsole").append('<p>Created table function is finished</p>');
              
             
-           }); 
+           //}); 
             
             }
             
