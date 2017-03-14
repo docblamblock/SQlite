@@ -356,9 +356,9 @@ alert("Going to show last update table");
                  image.src = results.rows.item(i).desc;
                  image.width = 50;
                   */                                                  
-                 $("#LastUpdateTableData").append("<tr><td>"); 
+                 $("#TableData").append("<tr><td>"); 
                  //$("#TableData").append(image);
-                 $("#LastUpdateTableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update+"</td></tr>"); 
+                 $("#TableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update+"</td></tr>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
@@ -977,7 +977,7 @@ $(function(){
            
            $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
            
-                
+           display_last_update_table();     
             //function4 is done
             
              });    // end of function4
