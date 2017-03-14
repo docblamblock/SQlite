@@ -317,15 +317,14 @@ $("#myconsole").append("<p>Inside getLastUpdatetime()</p>");
                  
                  //dfrd5.resolve();   
                  }
-                 dfrd5.resolve();
                  
               }, null);
 
-             dfrd5.resolve();
+             dfrd7.resolve();
 
  });       
 
-return dfrd5.promise();
+return dfrd7.promise();
 }
 
 
