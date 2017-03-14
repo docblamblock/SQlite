@@ -336,7 +336,7 @@ alert("Going to show infoID="+display_this_infoID);
 alert("Going to show last update table");
            
            
-           /*
+         
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
      
@@ -352,8 +352,9 @@ alert("Going to show last update table");
                  for (i = 0; i < len; i++){
                                                               
                  $("#TableData").append("<tr><td>"); 
-                 //$("#TableData").append(image);
-                 $("#TableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update+"</td></tr>"); 
+                 
+                // $("#TableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update); 
+                 $("#TableData").append("</td></tr>");
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
@@ -362,7 +363,7 @@ alert("Going to show last update table");
 
 
 
- });           */
+ });           
           
 }// end of display this infoID
 
