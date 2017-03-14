@@ -219,7 +219,7 @@ function saveToDb(item, index) {
     
    $("#myconsole").append("<p>SaveToDb " + this_venue + "</p>"); 
     
-      
+      /*
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (infoID, venue) VALUES (?,?)";             
@@ -238,7 +238,28 @@ function saveToDb(item, index) {
            
             
                                });   // end of myDB.transaction
-    
+             */
+             
+             
+                var this_title = "soft wired";
+   var this_imgbase64 = "set in func";
+
+     myDB.transaction(function(transaction) {
+     
+        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [this_title,this_imgbase64]
+            , function(tx, result) {
+                 alert('Inserted: '+title);
+            },
+            function(error){
+                 alert('Error occurred: '+title); 
+            });
+            
+           
+            
+    });   // end of myDB.transaction
+     
+             
      
 }  
  
