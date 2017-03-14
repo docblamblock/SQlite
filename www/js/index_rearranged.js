@@ -526,9 +526,14 @@ function function3(){
 
 }
 
+
+
+
+
+
 var last_update_table_exists = "";
 
-function function2()
+function function2()                // check if last_update_table exists
 {
   var dfrd3 = $.Deferred();
     setTimeout(function(){
@@ -536,11 +541,7 @@ function function2()
           myDB.transaction(function(transaction) {
           
           transaction.executeSql('SELECT name FROM sqlite_master WHERE type=?', ['table'], function (tx, results) { 
-            
-            
-    //$("#listview").append(image);
-            
-            
+       
                  var len = results.rows.length, i;
                  $("#myconsole").append('len='+len);
                  for (i = 0; i < len; i++){
@@ -556,11 +557,12 @@ function function2()
                     $("#myconsole").append('<br>Last Update table exists: ' + last_update_table_exists);
                     }
                  }
-                
+                else
+                {
                
                
                // if the last_update_table doesnt exist we need to create it
-              
+                }
                
                 
                // if the table does exist then we need to check the last time it was updated 
@@ -844,7 +846,13 @@ $(function(){
             else
             {
             $("#myconsole").append('Table does not exist. Must create');
-            createLastUpdateTable();  // surround this with logic
+            createLastUpdateTable.done(function(){
+            
+            $("#myconsole").append('<p>Created table function is finished</p>');
+             
+            
+           }); 
+            
             }
             
             
