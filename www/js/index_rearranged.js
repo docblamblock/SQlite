@@ -212,7 +212,7 @@ function saveToDb(item, index) {
     var this_category           = item.category;
     var this_sub_category       = item.sub_category;
     
-    var this_imgbase64          = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
+    //var this_imgbase64          = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
              
     
     //$("#listview").append(image);
@@ -252,7 +252,7 @@ function saveToDb(item, index) {
                  //$("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
             },
             function(error){
-                 alert('Error occurred: '+this_venue); 
+                 alert('Error occurred: '+this_venue+ " " +this_address); 
             });
             
            
