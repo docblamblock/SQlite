@@ -317,6 +317,8 @@ $("#myconsole").append("<p>Inside getLastUpdatetime()</p>");
                  
                  dfrd5.resolve();   
                  }
+                 dfrd5.resolve();
+                 
               }, null);
 
 
