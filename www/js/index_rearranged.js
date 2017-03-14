@@ -86,11 +86,11 @@ myDB.transaction(function(transaction) {
                  $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'</p>'); 
             });
             
-            dfrd5.resolve();
+            
            
             });   // end of myDB.transaction
           
-     
+          dfrd5.resolve();
 
     return dfrd5.promise();
     
@@ -898,8 +898,9 @@ $(function(){
            
             
             }
-             
-          function3().done(function(){    // function3
+           
+            // JSON call  
+          function3().done(function(){    // function3   // JSON call
             
             $("#myconsole").append('<p>function3-JSON is done.</p>');
             // JSON call
@@ -907,7 +908,7 @@ $(function(){
            
            $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
            
-                 // JSON call
+                
             //function4 is done
             
              });    // end of function4
