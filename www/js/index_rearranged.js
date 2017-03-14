@@ -592,18 +592,16 @@ function function3(){
     var dfrd3 = $.Deferred();
     
         
-        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15&lastUpdate="+lastUpdate;
+        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15&lastUpdate="+timeOfLastUpdate;
 
-        console.log('url='+url);
+        $("#myconsole").append('<p>timeOfLastUpdate='+timeOfLastUpdate+' AND url='+url+'</p>');
 
         var jsonPromise = $.getJSON(url);
         
         jsonPromise.done(function(data) {
         console.log('jsonPromise is done!'+ data[1].venue);
-        $("#myconsole").append('<br>jsonPromise is done!'+ data[1].venue);
+        $("#myconsole").append('<p>jsonPromise is done! '+ data[1].venue + '</p>');
         
-        console.log(data);
-        console.log('task 1 in getPROC is done!');
         
         proc_array = $.map(data, function(value, index) {
         return [value];
@@ -966,29 +964,30 @@ $(function(){
             
             }
            
-            // JSON call  
-          function3().done(function(){    // function3   // JSON call
             
-            $("#myconsole").append('<p>function3-JSON is done.</p>');
+          getLastUpdatetime().done(function(){    // get time of the last update from Sqlite
             
-           // after JSON is done insert the latest update time into last_update_table
+            $("#myconsole").append('<p>getLastUpdatetime() is done.</p>');
             
-                     updateLastUpdateTime().done(function(){
+           
+            
+                     function3().done(function(){      // do the JSON call with the time of the last update  
                      
-                     $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
+                     $("#myconsole").append('<p>JSON is Done.</p>');
                      
-                     display_last_update_table();     
+                         
                      
+                     // after JSON is done insert the latest update time into last_update_table
                      
-                      getLastUpdatetime().done(function(){
-                     
-                     $("#myconsole").append('<p>Finished everything.</p>');
-                     
-                    
-                     
-                    
-                      
-                       });    // end of function
+                              updateLastUpdateTime().done(function(){
+                             
+                             $("#myconsole").append('<p>updateLastUpdateTime() done. Finished everything.</p>');
+                             
+                              display_last_update_table(); 
+                             
+                            
+                              
+                               });    // end of function
                       
                        });    // end of function
             
