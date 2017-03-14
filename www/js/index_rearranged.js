@@ -139,7 +139,7 @@ function updateLastUpdateTime()
         
         $("#myconsole").append('<br><br>finished waiting in updateLastUpdateTime<br><br>');
         
-
+         return dfrd5.promise();
 }        
 
 
@@ -148,11 +148,11 @@ function updateLastUpdateTime()
 
 
 
-    return dfrd5.promise();
+ 
     
 
 
-}
+
 
 
 
@@ -1011,14 +1011,14 @@ $(function(){
             
            // after JSON is done insert the latest update time into last_update_table
             
-           updateLastUpdateTime().done(function(){
-           
-           $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
-           
-           display_last_update_table();     
-            //function4 is done
-            
-             });    // end of function4
+                     updateLastUpdateTime().done(function(){
+                     
+                     $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
+                     
+                     display_last_update_table();     
+                      //function4 is done
+                      
+                       });    // end of function4
             
          });   // end of function3    
             
