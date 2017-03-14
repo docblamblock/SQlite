@@ -80,10 +80,10 @@ myDB.transaction(function(transaction) {
         
         transaction.executeSql(executeQuery, [seconds]
             , function(tx, result) {
-                alert('<p>Inserted: '+seconds+' into the last_update_table</p>');
+                $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
             },
             function(error){
-                 alert('Error occurred trying to insert time: '+seconds); 
+                 $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'</p>'); 
             });
             
             dfrd5.resolve();
@@ -893,21 +893,26 @@ $(function(){
             
             $("#myconsole").append('<p>Created table function is finished</p>');
             
-            insertLastUpdateTime(); 
+            
               
            
             
             }
+             
+          function3().done(function(){    // function3
             
+            $("#myconsole").append('<p>function3-JSON is done.</p>');
+            // JSON call
+           insertLastUpdateTime()().done(function(){
+           
+           $("#myconsole").append('<p>insertLastUpdateTime is Done.</p>');
+           
+                 // JSON call
+            //function4 is done
             
+             });    // end of function4
             
-            
-           function3().done(function(){
-            //function3 is done
-            $("#myconsole").append('function3 is deanta!');
-        });
-            
-            
+         });   // end of function3    
             
             
         });
