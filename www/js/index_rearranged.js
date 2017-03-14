@@ -81,9 +81,9 @@ function insertLastUpdateTime()
    
      
         myDB.transaction(function(transaction) {
-          var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?) where id=?";             
-          //                  UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
-        transaction.executeSql(executeQuery, [seconds, zero]
+          var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
+          
+        transaction.executeSql(executeQuery, [seconds]
             , function(tx, result) {
                   
                 $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
