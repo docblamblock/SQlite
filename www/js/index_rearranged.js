@@ -7,7 +7,9 @@ var proc_array =[];
 
  var d = new Date();
 document.getElementById("date").innerHTML = d;    
-var seconds = d.getTime() / 1000;
+var seconds = Math.round(d.getTime() / 1000);
+
+seconds = Math.round(seconds);
 
 var timeOfLastUpdate;
 
@@ -213,7 +215,7 @@ function saveToDb(item, index) {
     
     //$("#listview").append(image);
     
-    
+   $("#myconsole").append("<p>SaveToDb " + this_venue + "</p>"); 
     
       
        myDB.transaction(function(transaction) {
@@ -975,15 +977,18 @@ $(function(){
                      
                      $("#myconsole").append('<p>JSON is Done.</p>');
                      
+                         proc_array.forEach(saveToDb); 
                          
                      
                      // after JSON is done insert the latest update time into last_update_table
                      
                               updateLastUpdateTime().done(function(){
                              
+                             display_last_update_table(); 
+                             
                              $("#myconsole").append('<p>updateLastUpdateTime() done. Finished everything.</p>');
                              
-                              display_last_update_table(); 
+                              
                              
                             
                               
