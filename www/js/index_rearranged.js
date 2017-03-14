@@ -199,8 +199,8 @@ function saveToDb(item, index) {
     
     
     
-    var this_infoID             = 1234; 
-    var this_venue              = "venue name";            // venue is the name of the element on the JSON feed from PROC
+    var this_infoID             = item.infoID; 
+    var this_venue              = item.venue;            // venue is the name of the element on the JSON feed from PROC
     
     /*
     var this_address            = item.address;
@@ -247,12 +247,12 @@ function saveToDb(item, index) {
      myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
-        transaction.executeSql(executeQuery, [this_title,this_imgbase64]
+        transaction.executeSql(executeQuery, [this_venue,this_imgbase64]
             , function(tx, result) {
-                 alert('Inserted: '+title);
+                 //alert('Inserted: '+title);
             },
             function(error){
-                 alert('Error occurred: '+title); 
+                 //alert('Error occurred: '+title); 
             });
             
            
