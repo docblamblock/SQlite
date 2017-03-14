@@ -333,10 +333,10 @@ alert("Going to show infoID="+display_this_infoID);
  function display_last_update_table()
 {
 
-var display_this_infoID= display_infoID;
-
 alert("Going to show last update table");
            
+           
+           /*
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
      
@@ -350,12 +350,7 @@ alert("Going to show last update table");
                  var len = results.rows.length, i;
                  $("#rowCount").html(len);
                  for (i = 0; i < len; i++){
-             
-                 /*
-                 var image = new Image();
-                 image.src = results.rows.item(i).desc;
-                 image.width = 50;
-                  */                                                  
+                                                              
                  $("#TableData").append("<tr><td>"); 
                  //$("#TableData").append(image);
                  $("#TableData").append("</td><td>"+results.rows.item(i).id+"<br>"+results.rows.item(i).time_of_last_update+"</td></tr>"); 
@@ -367,7 +362,7 @@ alert("Going to show last update table");
 
 
 
- });
+ });           */
           
 }// end of display this infoID
 
