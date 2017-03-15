@@ -219,7 +219,7 @@ function saveToDb(item, index) {
     
    $("#myconsole").append("<p>Save To Database " + this_venue + "</p>"); 
     
-   
+       /*
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
@@ -240,27 +240,27 @@ function saveToDb(item, index) {
             });   // end of myDB.transaction
            
              // [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
+            */ 
              
-             
-             /*
+           
                 var this_title = "soft wired";
    var this_imgbase64 = "set in func";
 
      myDB.transaction(function(transaction) {
     
-        var executeQuery = "INSERT INTO phonegap_pro (venue, address, imgbase64) VALUES (?,?,?)";             
-        transaction.executeSql(executeQuery, [this_venue, this_address, this_imgbase64]
+        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [this_venue, this_imgbase64]
             , function(tx, result) {
-                 //$("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
+                 $("#myconsole").append("<p>Done:" + this_venue + "</p>"); 
             },
             function(error){
-                 alert('Error occurred: '+this_venue+ " " +this_address); 
+                 alert('Error occurred: '+this_venue+ " "); 
             });
             
            
             
     });   // end of myDB.transaction
-               */
+            
              
      
 }  
