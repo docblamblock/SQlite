@@ -212,12 +212,12 @@ function saveToDb(item, index) {
     var this_category           = item.category;
     var this_sub_category       = item.sub_category;
     
-    //var this_imgbase64          = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
+    var this_imgbase64          = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
              
     
     //$("#listview").append(image);
     
-   $("#myconsole").append("<p>SaveToDb " + this_venue + "</p>"); 
+   $("#myconsole").append("<p>SaveToDatabase " + this_venue + "</p>"); 
     
    
        myDB.transaction(function(transaction) {
@@ -226,7 +226,7 @@ function saveToDb(item, index) {
         
         bvnmtransaction.executeSql(executeQuery, [this_venue,  this_imgbase64]
         
-        //transaction.executeSql(executeQuery, [this_infoID, this_venue]
+        
         
             , function(tx, result) {
                 $("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
