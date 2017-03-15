@@ -215,7 +215,7 @@ function saveToDb(item, index) {
     var this_imgbase64          = item.base64;       // base64 is the name of the element on the JSON feed from PROC 
              
     
-    //$("#listview").append(image);
+    //$("#listview").append('<p>'+this_venue+'</p>');
     
    $("#myconsole").append("<p>Save To Database " + this_venue + "</p>"); 
     
@@ -231,13 +231,13 @@ function saveToDb(item, index) {
             , function(tx, result) {
                 $("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
             },
-            function(tx, err){
+            function(err){
                  $("#myconsole").append("<p>Error: " + this_venue + " " + err.message + " Code:" + err.code + "</p>"); 
             });
             
            
             
-                               });   // end of myDB.transaction
+            });   // end of myDB.transaction
            
              // [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
              
