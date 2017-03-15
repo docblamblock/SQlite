@@ -222,9 +222,9 @@ function saveToDb(item, index) {
    
        myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)";             
+        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
         
-        bvnmtransaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
+        bvnmtransaction.executeSql(executeQuery, [this_venue,  this_imgbase64]
         
         //transaction.executeSql(executeQuery, [this_infoID, this_venue]
         
