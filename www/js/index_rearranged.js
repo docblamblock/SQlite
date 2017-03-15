@@ -219,14 +219,14 @@ function saveToDb(item, index) {
     
    $("#myconsole").append("<p>SaveToDb " + this_venue + "</p>"); 
     
-      /*
+   
        myDB.transaction(function(transaction) {
      
         var executeQuery = "INSERT INTO phonegap_pro (infoID, venue) VALUES (?,?)";             
         
-        //transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
+        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
         
-        transaction.executeSql(executeQuery, [this_infoID, this_venue]
+        //transaction.executeSql(executeQuery, [this_infoID, this_venue]
         
             , function(tx, result) {
                 $("#myconsole").append("<p>Done: ("+this_infoID+")" + this_venue + "</p>"); 
@@ -238,9 +238,11 @@ function saveToDb(item, index) {
            
             
                                });   // end of myDB.transaction
-             */
+           
              // [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
              
+             
+             /*
                 var this_title = "soft wired";
    var this_imgbase64 = "set in func";
 
@@ -258,7 +260,7 @@ function saveToDb(item, index) {
            
             
     });   // end of myDB.transaction
-     
+               */
              
      
 }  
@@ -762,6 +764,22 @@ $(document).ready(function() {
        alert("creating table");
       
       
+           myDB.transaction(function(transaction) {
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
+              function(tx, result) {
+                  alert("Table created successfully");
+              }, 
+              function(error) {
+                    alert("Error occurred while creating the table.");
+              });
+              
+              
+              
+          });
+          
+      
+      
+         /*
           myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, venue text, imgbase64 blob)', [],
               function(tx, result) {
@@ -771,6 +789,9 @@ $(document).ready(function() {
                     alert("Error occurred while creating the table.");
               });
           });
+          
+          */
+          
       });
       
       
