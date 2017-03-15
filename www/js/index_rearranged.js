@@ -217,7 +217,7 @@ function saveToDb(item, index) {
     
     //$("#listview").append(image);
     
-   $("#myconsole").append("<p>SaveToDatabase " + this_venue + "</p>"); 
+   $("#myconsole").append("<p>Save To Database " + this_venue + "</p>"); 
     
    
        myDB.transaction(function(transaction) {
