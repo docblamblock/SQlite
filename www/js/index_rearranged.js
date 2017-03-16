@@ -248,8 +248,8 @@ function saveToDb(item, index) {
 
      myDB.transaction(function(transaction) {
     
-        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
-        transaction.executeSql(executeQuery, [this_venue, this_imgbase64]
+        var executeQuery = "INSERT INTO phonegap_pro (venue, address, imgbase64) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [this_venue, this_address, this_imgbase64]
             , function(tx, result) {
                  $("#myconsole").append("<p>Done:" + this_venue + "</p>"); 
             },
@@ -914,8 +914,8 @@ $("#showLastUpdateTable").click(function(){
 
      myDB.transaction(function(transaction) {
      
-        var executeQuery = "INSERT INTO phonegap_pro (venue, imgbase64) VALUES (?,?)";             
-        transaction.executeSql(executeQuery, [this_title,this_imgbase64]
+        var executeQuery = "INSERT INTO phonegap_pro (venue, address, imgbase64) VALUES (?,?,?)";             
+        transaction.executeSql(executeQuery, [this_title, this_address, this_imgbase64]
             , function(tx, result) {
                  alert('Inserted: '+title);
             },
