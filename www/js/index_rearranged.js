@@ -256,7 +256,7 @@ function saveToDb(item, index) {
             
                  var len = result.rows.length;
                  var affected = result.rowsAffected;
-                 $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")(aff="+affected+</p>"); 
+                 $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")(aff="+affected+"</p>"); 
             },
             function(error){
                  alert('Error occurred: '+this_venue+ " "); 
