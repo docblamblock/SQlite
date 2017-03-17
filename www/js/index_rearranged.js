@@ -243,15 +243,21 @@ function saveToDb(item, index) {
             */ 
              
            
-                var this_title = "soft wired";
-   var this_imgbase64 = "set in func";
-
-     myDB.transaction(function(transaction) {
+      myDB.transaction(function(transaction) {
     
-        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)";             
-        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
+    // new entry
+        //var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)";             
+    
+    // update existing entry
+    
+       var executeQuery = "UPDATE phonegap_pro set venue=?, address=?, gps=?, location=?, category=?, sub_category=?, short_info=?, info=?, imgbase64=? where infoID=?";             
+     
+        
+        
+                                                                                                                                                                                          
+        transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64, this_infoID]
             , function(tx, result) {
-                 $("#myconsole").append("<p>Done:" + this_venue + "</p>"); 
+                 $("#myconsole").append("<p>Updated:" + this_venue + "</p>"); 
             },
             function(error){
                  alert('Error occurred: '+this_venue+ " "); 
