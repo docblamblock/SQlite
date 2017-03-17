@@ -270,7 +270,7 @@ function saveToDb(item, index) {
             
 
 
-         /*
+        
          if (affected<1)
                   {
                   
@@ -296,8 +296,7 @@ function saveToDb(item, index) {
                 });    
                   
                   }    // end of insert condition
-                 
-          */
+       
 
 
 
