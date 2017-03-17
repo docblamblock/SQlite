@@ -248,8 +248,8 @@ function saveToDb(item, index) {
 
      myDB.transaction(function(transaction) {
     
-        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, short_info, info, imgbase64) VALUES (?,?,?,?,?,?)";             
-        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_short_info, this_info, this_imgbase64]
+        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)";             
+        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
             , function(tx, result) {
                  $("#myconsole").append("<p>Done:" + this_venue + "</p>"); 
             },
@@ -825,13 +825,14 @@ $(document).ready(function() {
                  //$("#listview").append(image);
                  
               
+                 /*
                  var image = new Image();
                  image.src = results.rows.item(i).desc;
                  image.width = 50;
-                  
+                 */ 
                  $("#TableData").append("<tr><td>"); 
-                 $("#TableData").append(image);
-                 $("#TableData").append("</td><td>Pic:<a href='javascript: void(0);' onClick='display_table("+results.rows.item(i).infoID+");'>"+results.rows.item(i).venue+"</a> (" + results.rows.item(i).infoID+")</td><td>"+results.rows.item(i).short_info+"</td></tr>"); 
+                 //$("#TableData").append(image);
+                 $("#TableData").append("</td><td><a href='javascript: void(0);' onClick='display_table("+results.rows.item(i).infoID+");'>"+results.rows.item(i).venue+"</a> (" + results.rows.item(i).gps+")</td><td>"+results.rows.item(i).category+"</td></tr>"); 
                  
                     //$("#TableData").append(image+"<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
                     
