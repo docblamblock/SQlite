@@ -1,7 +1,3 @@
-
-
-
-                              
 demoP = document.getElementById("demo");
 var proc_array =[];
 
@@ -259,7 +255,8 @@ function saveToDb(item, index) {
             , function(tx, result) {
             
                  var len = result.rows.length;
-                 $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")</p>"); 
+                 var affected = result.rowsAffected;
+                 $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")(aff="+affected+</p>"); 
             },
             function(error){
                  alert('Error occurred: '+this_venue+ " "); 
@@ -1108,9 +1105,3 @@ function test(i)
   alert("test func i="+i)
   return somearray;  
   }
-
-
-
-
-      
-  
