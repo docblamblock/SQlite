@@ -237,7 +237,8 @@ function saveToDb(item, index) {
            
              // [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
             */ 
-             
+    
+    var affected;         
            
       myDB.transaction(function(transaction) {
     
@@ -253,7 +254,7 @@ function saveToDb(item, index) {
             , function(tx, result) {
             
                  //var len = result.rows.length;
-                 var affected = result.rowsAffected;
+                 affected = result.rowsAffected;
                  $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")(aff="+affected+"</p>");
                  
         
