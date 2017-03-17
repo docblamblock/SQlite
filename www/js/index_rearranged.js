@@ -248,8 +248,8 @@ function saveToDb(item, index) {
 
      myDB.transaction(function(transaction) {
     
-        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, imgbase64) VALUES (?,?,?,?)";             
-        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_imgbase64]
+        var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, short_info, imgbase64) VALUES (?,?,?,?,?)";             
+        transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_short_info, this_imgbase64]
             , function(tx, result) {
                  $("#myconsole").append("<p>Done:" + this_venue + "</p>"); 
             },
