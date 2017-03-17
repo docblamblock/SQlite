@@ -258,7 +258,7 @@ function saveToDb(item, index) {
         transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64, this_infoID]
             , function(tx, result) {
             
-                 var len = results.rows.length;
+                 var len = result.rows.length;
                  $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")</p>"); 
             },
             function(error){
