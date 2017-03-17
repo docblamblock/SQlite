@@ -256,8 +256,27 @@ function saveToDb(item, index) {
                  var affected = result.rowsAffected;
                  $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")(aff="+affected+"</p>");
                  
-                 if (affected<1)
+        
+                  
+            },
+            function(error){
+                 alert('Error occurred: '+this_venue+ " "); 
+            });
+            
+           
+            
+    });   // end of myDB.transaction
+            
+
+
+
+         if (affected<1)
                   {
+                  
+                  
+                  myDB.transaction(function(transaction) {
+                  
+                  
                   $("#myconsole").append("<p>Did not update as does not exist:" + this_venue + " (aff="+affected+"</p>");
                   
                   var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)"; 
@@ -271,22 +290,19 @@ function saveToDb(item, index) {
                  },
             function(error2){
                  alert('Error occurred inserting: '+this_venue+ " "); 
-            });
+                     });
                   
-                  
+                });    
                   
                   }    // end of insert condition
                  
-                  
-            },
-            function(error){
-                 alert('Error occurred: '+this_venue+ " "); 
-            });
-            
-           
-            
-    });   // end of myDB.transaction
-            
+          
+
+
+
+
+
+
              
      
 }  
