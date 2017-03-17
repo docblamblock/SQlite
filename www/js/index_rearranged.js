@@ -255,7 +255,7 @@ function saveToDb(item, index) {
             
                  //var len = result.rows.length;
                  affected = result.rowsAffected;
-                 $("#myconsole").append("<p>Updated:" + this_venue + " (aff="+affected+"</p>");
+                 $("#myconsole").append("<p>Updated..:" + this_venue + " (aff="+affected+"</p>");
                  
         
                   
@@ -268,7 +268,8 @@ function saveToDb(item, index) {
             
     });   // end of myDB.transaction
             
-
+      if (affected==2)
+           $("#myconsole").append("<p>Nice one</p>");
 
         
          if (affected<1)
