@@ -248,15 +248,36 @@ function saveToDb(item, index) {
     
        var executeQuery = "UPDATE phonegap_pro set venue=?, address=?, gps=?, location=?, category=?, sub_category=?, short_info=?, info=?, imgbase64=? where infoID=?";             
      
-        
-        
                                                                                                                                                                                           
         transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64, this_infoID]
             , function(tx, result) {
             
-                 var len = result.rows.length;
+                 //var len = result.rows.length;
                  var affected = result.rowsAffected;
-                 $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")(aff="+affected+"</p>"); 
+                 $("#myconsole").append("<p>Updated:" + this_venue + " (rows="+len+")(aff="+affected+"</p>");
+                 
+                 if (affected<1)
+                  {
+                  $("#myconsole").append("<p>Did not update as does not exist:" + this_venue + " (aff="+affected+"</p>");
+                  
+                  var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)"; 
+                  
+                  transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64, this_infoID]
+            , function(tx2, result2) {
+            
+                 var len = result2.rows.length;
+                 //var affected = result.rowsAffected;
+                 $("#myconsole").append("<p>Inserted:" + this_venue + " (rows="+len+")</p>");
+                 },
+            function(error2){
+                 alert('Error occurred inserting: '+this_venue+ " "); 
+            });
+                  
+                  
+                  
+                  }    // end of insert condition
+                 
+                  
             },
             function(error){
                  alert('Error occurred: '+this_venue+ " "); 
