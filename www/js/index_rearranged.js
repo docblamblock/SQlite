@@ -261,7 +261,7 @@ function saveToDb(item, index) {
                   //$("#myconsole").append("<p>Nice one but in the loop</p>");
  
                  if (affected==0)
-                    saveNewtoDB(this_index);
+                    saveNewtoDB(item, this_index);
                 
                   
             },
@@ -276,37 +276,7 @@ function saveToDb(item, index) {
       $("#myconsole").append("<p>Outside loop..:" + this_venue + " (affected="+affected+"</p>");
                 
             
-      if (affected==2)
-           $("#myconsole").append("<p>Nice one</p>");
-
-        
-         if (affected<1)
-                  {
-                  
-                  
-                  myDB.transaction(function(transaction) {
-                  
-                  
-                  $("#myconsole").append("<p>Did not update as does not exist:" + this_venue + " (aff="+affected+"</p>");
-                  
-                  var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)"; 
-                  
-                  transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64, this_infoID]
-            , function(tx2, result2) {
-            
-                 var len = result2.rows.length;
-                 //var affected = result.rowsAffected;
-                 $("#myconsole").append("<p>Inserted:" + this_venue + " (rows="+len+")</p>");
-                 },
-            function(error2){
-                 alert('Error occurred inserting: '+this_venue+ " "); 
-                     });
-                  
-                });    
-                  
-                  }    // end of insert condition
-       
-
+  
 
 
 
@@ -317,11 +287,53 @@ function saveToDb(item, index) {
 }  
  
 
-function saveNewtoDB(this_index)
+function saveNewtoDB(item, this_index)
 {
 
 var i = this_index;
-$("#myconsole").append("<p>saveNewtoDB ("+i+"):" + proc_array[i].venue + "</p>");
+
+    
+    var this_index              = index;
+    var this_infoID             = item.infoID; 
+    var this_venue              = item.venue;            // venue is the name of the element on the JSON feed from PROC
+    
+ 
+    var this_address            = item.address;
+    var this_short_info         = item.short_info;
+    var this_info               = item.info;
+    
+    var this_gps                = item.gps;
+    var this_location           = item.location;
+    var this_category           = item.category;
+    var this_sub_category       = item.sub_category;
+    
+    var this_imgbase64          = item.base64; 
+
+
+$("#myconsole").append("<p>saveNewtoDB ("+i+"):" + this_venue + "</p>");
+
+      myDB.transaction(function(transaction) {
+                  
+                  
+                  $("#myconsole").append("<p>inserting new entry:</p>");
+                  
+                  var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)"; 
+                  
+                  transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64, this_infoID]
+            , function(tx2, result2) {
+            
+                 var len = result2.rows.length;
+                 //var affected = result.rowsAffected;
+                 $("#myconsole").append("<p>Inserted new:" + this_venue + " </p>");
+                 },
+            function(error2){
+                 alert('Error occurred inserting: '+this_venue+ " "); 
+                     });
+                  
+                }); 
+
+
+
 }
 
 
