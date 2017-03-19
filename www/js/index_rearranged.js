@@ -1026,7 +1026,7 @@ function onDeviceReady() {
     
     $("#myconsole").append("Device is Ready time = " +seconds);
 
-     //createTable();  // create main db if it doesnt exist
+     
 
 
 if (checkConnection() == "none" ) {
@@ -1048,7 +1048,8 @@ else {
         
         
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
-  
+
+createTable();  // create main db if it doesnt exist  
 
 
 $(function(){
