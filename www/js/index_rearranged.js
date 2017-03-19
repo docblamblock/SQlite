@@ -261,7 +261,7 @@ function saveToDb(item, index) {
                   //$("#myconsole").append("<p>Nice one but in the loop</p>");
  
                  if (affected==0)
-                    saveNewtoDB(affected, this_index);
+                    saveNewtoDB(this_index);
                 
                   
             },
@@ -317,9 +317,11 @@ function saveToDb(item, index) {
 }  
  
 
-function saveNewtoDB(this_infoID)
+function saveNewtoDB(this_index)
 {
-$("#myconsole").append("<p>saveNewtoDB:" + this_infoID + "</p>");
+
+var i = this_index;
+$("#myconsole").append("<p>saveNewtoDB ("+i+"):" + proc_array[i].venue + "</p>");
 }
 
 
