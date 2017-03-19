@@ -1026,6 +1026,9 @@ function onDeviceReady() {
     
     $("#myconsole").append("Device is Ready time = " +seconds);
 
+     createTable();  // create main db if it doesnt exist
+
+
 if (checkConnection() == "none" ) {
         connectionStatus = 'offline'; 
     } 
