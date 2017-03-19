@@ -255,7 +255,7 @@ function saveToDb(item, index) {
             
                  //var len = result.rows.length;
                  affected = result.rowsAffected;
-                 $("#myconsole").append("<p>Updated..:" + this_venue + " (affected="+affected+"</p>");
+                 $("#myconsole").append("<p>Updated..:" + this_venue + " (index="+this_index+") (affected="+affected+"</p>");
                 
                 // if (affected==2)
                   //$("#myconsole").append("<p>Nice one but in the loop</p>");
