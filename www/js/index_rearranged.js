@@ -166,10 +166,10 @@ function updateLastUpdateTime()
 function createTable() 
 {   
 
-     myDB.transaction(function(transaction) {
+      myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
               function(tx, result) {
-                  alert("Table created successfully");
+                  alert("New phonegap_pro table created successfully");
               }, 
               function(error) {
                     alert("Error occurred while creating the table.");
