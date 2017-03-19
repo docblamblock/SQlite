@@ -2,6 +2,8 @@ demoP = document.getElementById("demo");
 var proc_array =[];
 
  var d = new Date();
+ 
+var datime = d; 
 document.getElementById("date").innerHTML = d;    
 var seconds = Math.round(d.getTime() / 1000);
 
@@ -45,7 +47,7 @@ function createLastUpdateTable()
  var dfrd6 = $.Deferred();
 
 myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text, formatted_time text)', [],
               function(tx, result) {
                   //alert("Table last_update created successfully");
                    $("#myconsole").append('<p>Last update Table created successfully (or it already exists!</p>');
@@ -85,16 +87,16 @@ function insertLastUpdateTime()
       timeOfLastUpdate = seconds; // global variable
      
         myDB.transaction(function(transaction) {
-          var executeQuery = "INSERT INTO last_update_table (time_of_last_update) VALUES (?)";             
+          var executeQuery = "INSERT INTO last_update_table (time_of_last_update, formatted_time) VALUES (?,?)";             
           
-        transaction.executeSql(executeQuery, [seconds]
+        transaction.executeSql(executeQuery, [seconds, datime]
             , function(tx, result) {
                   
-                $("#myconsole").append('<p>Inserted: '+seconds+' into the last_update_table</p>');
+                $("#myconsole").append('<p>Inserted: '+seconds+' ('+datime+')into the last_update_table</p>');
                  dfrd5.resolve();
             },
             function(error){
-                 $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'</p>');
+                 $("#myconsole").append('<p>Error occurred trying to insert time: '+seconds+'('+datime+')</p>');
                   dfrd5.resolve(); 
             });
             
@@ -122,9 +124,9 @@ function updateLastUpdateTime()
         timeOfLastUpdate = seconds; 
      
         myDB.transaction(function(transaction) {
-          var executeQuery = "UPDATE last_update_table set time_of_last_update=? where id=?";             
+          var executeQuery = "UPDATE last_update_table set time_of_last_update=?, time_formatted=? where id=?";             
           //                  UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
-        transaction.executeSql(executeQuery, [seconds, one]
+        transaction.executeSql(executeQuery, [seconds, datime, one]
             , function(tx, result) {
                   
                 $("#myconsole").append('<p>Updated the last_update_table with "+ seconds +"</p>');
@@ -169,10 +171,10 @@ function createTable()
       myDB.transaction(function(transaction) {
           transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, infoID integer, venue text, address text, short_info text, gps text, location integer, category integer, sub_category integer, info blob, imgbase64 blob)', [],
               function(tx, result) {
-                  alert("New phonegap_pro table created successfully");
+                  $("#myconsole").append("New phonegap_pro table created successfully");
               }, 
               function(error) {
-                    alert("Error occurred while creating the table.");
+                    $("#myconsole").append("Error occurred while creating the table.");
               });
               
               
@@ -342,7 +344,7 @@ function display_table(display_infoID)
 
 var display_this_infoID= display_infoID;
 
-alert("Going to show infoID="+display_this_infoID);
+//alert("Going to show infoID="+display_this_infoID);
            
             $("#TableData").html("");
             myDB.transaction(function(transaction) {
@@ -412,7 +414,7 @@ $("#myconsole").append("<p>Inside getLastUpdatetime()</p>");
                  
                  timeOfLastUpdate = results.rows.item(i).time_of_last_update; 
                                                               
-                 $("#myconsole").append("getLastUpdatetime loop: "+ results.rows.item(i).time_of_last_update); 
+                 $("#myconsole").append("getLastUpdatetime loop: "+ results.rows.item(i).time_of_last_update + " (" ++ results.rows.item(i).time_formatted+ ")"); 
                  
                   
                  }
@@ -431,7 +433,7 @@ return dfrd7.promise();
  function display_last_update_table()
 {
 
-alert("Going to show last update table");
+//alert("Going to show last update table");
            
            
          
