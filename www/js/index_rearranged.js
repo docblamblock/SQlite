@@ -3,7 +3,7 @@ var proc_array =[];
 
  var d = new Date();
  
-var datime = d; 
+var datime = new Date();
 document.getElementById("date").innerHTML = d;    
 var seconds = Math.round(d.getTime() / 1000);
 
@@ -129,7 +129,7 @@ function updateLastUpdateTime()
         transaction.executeSql(executeQuery, [seconds, datime, one]
             , function(tx, result) {
                   
-                $("#myconsole").append('<p>Updated the last_update_table with "+ seconds +"</p>');
+                $("#myconsole").append('<p>Updated the last_update_table with '+ seconds +'</p>');
                  dfrd5.resolve();
             },
             function(error){
