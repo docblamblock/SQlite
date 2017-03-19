@@ -194,7 +194,7 @@ function saveToDb(item, index) {
     //demoP.innerHTML = demoP.innerHTML + "Saving:  " + item.infoID + "  (" + item.info + ")<br>";
     
     
-    
+    var this_index              = index;
     var this_infoID             = item.infoID; 
     var this_venue              = item.venue;            // venue is the name of the element on the JSON feed from PROC
     
@@ -257,11 +257,11 @@ function saveToDb(item, index) {
                  affected = result.rowsAffected;
                  $("#myconsole").append("<p>Updated..:" + this_venue + " (affected="+affected+"</p>");
                 
-                 if (affected==2)
-                  $("#myconsole").append("<p>Nice one but in the loop</p>");
+                // if (affected==2)
+                  //$("#myconsole").append("<p>Nice one but in the loop</p>");
  
                  if (affected==0)
-                    saveNewtoDB(affected, this_infoID);
+                    saveNewtoDB(affected, this_index);
                 
                   
             },
@@ -317,7 +317,7 @@ function saveToDb(item, index) {
 }  
  
 
-function saveNewtoDB(affected, this_infoID)
+function saveNewtoDB(this_infoID)
 {
 $("#myconsole").append("<p>saveNewtoDB:" + this_infoID + "</p>");
 }
