@@ -319,14 +319,14 @@ $("#myconsole").append("<p>saveNewtoDB ("+i+"):" + this_venue + "</p>");
                   
                   var executeQuery = "INSERT INTO phonegap_pro (infoID, venue, address, gps, location, category, sub_category, short_info, info, imgbase64) VALUES (?,?,?,?,?,?,?,?,?,?)"; 
                   
-                  transaction.executeSql(executeQuery, [this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64, this_infoID]
-            , function(tx2, result2) {
+                  transaction.executeSql(executeQuery, [this_infoID, this_venue, this_address, this_gps, this_location, this_category, this_sub_category, this_short_info, this_info, this_imgbase64]
+            , function(tx, result) {
             
-                 var len = result2.rows.length;
+                 var len = result.rows.length;
                  //var affected = result.rowsAffected;
                  $("#myconsole").append("<p>Inserted new:" + this_venue + " </p>");
                  },
-            function(error2){
+            function(error){
                  alert('Error occurred inserting: '+this_venue+ " "); 
                      });
                   
