@@ -260,7 +260,9 @@ function saveToDb(item, index) {
                  if (affected==2)
                   $("#myconsole").append("<p>Nice one but in the loop</p>");
  
-        
+                 if (affected==0)
+                    saveNewtoDB(affected, this_infoID);
+                
                   
             },
             function(error){
@@ -315,6 +317,10 @@ function saveToDb(item, index) {
 }  
  
 
+function saveNewtoDB(affected, this_infoID)
+{
+$("#myconsole").append("<p>saveNewtoDB:" + this_infoID + "</p>");
+}
 
 
 function display_table(display_infoID)
