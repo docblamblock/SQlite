@@ -293,7 +293,7 @@ function saveNewtoDB(item, this_index)
 var i = this_index;
 
     
-    var this_index              = index;
+    
     var this_infoID             = item.infoID; 
     var this_venue              = item.venue;            // venue is the name of the element on the JSON feed from PROC
     
