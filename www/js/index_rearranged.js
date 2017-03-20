@@ -1083,7 +1083,8 @@ $(function(){
             {
             $("#myconsole").append('<p>Table does not exist. Must create!</p>');
             createLastUpdateTable();
-            insertLastUpdateTime();
+            
+            //insertLastUpdateTime();
             
             $("#myconsole").append('<p>Created table function is finished</p>');
             
@@ -1109,7 +1110,7 @@ $(function(){
                      
                      // after JSON is done insert the latest update time into last_update_table
                      
-                              updateLastUpdateTime().done(function(){
+                             updateLastUpdateTime().done(function(){
                              
                              display_last_update_table(); 
                              
