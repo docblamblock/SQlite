@@ -47,7 +47,7 @@ function createLastUpdateTable()
  var dfrd6 = $.Deferred();
 
 myDB.transaction(function(transaction) {
-          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text, formatted_time text)', [],
+          transaction.executeSql('CREATE TABLE IF NOT EXISTS last_update_table (id integer primary key, time_of_last_update text, time_formatted text)', [],
               function(tx, result) {
                   //alert("Table last_update created successfully");
                    $("#myconsole").append('<p>Last update Table created successfully (or it already exists!</p>');
@@ -87,7 +87,7 @@ function insertLastUpdateTime()
       timeOfLastUpdate = seconds; // global variable
      
         myDB.transaction(function(transaction) {
-          var executeQuery = "INSERT INTO last_update_table (time_of_last_update, formatted_time) VALUES (?,?)";             
+          var executeQuery = "INSERT INTO last_update_table (time_of_last_update, time_formatted) VALUES (?,?)";             
           
         transaction.executeSql(executeQuery, [seconds, datime]
             , function(tx, result) {
@@ -120,9 +120,9 @@ function updateLastUpdateTime()
  var dfrd5 = $.Deferred();
  var one = 1;  // time will be kept in the first row with id=1
 
- var datime2;
+ //var datime2;
  
- datime2= "blah";
+ //datime2= "blah";
 
         // doing async stuff
         timeOfLastUpdate = seconds; 
