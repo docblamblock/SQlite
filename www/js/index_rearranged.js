@@ -495,7 +495,7 @@ function getPROC_new()
 var dfrd3 = $.Deferred();
     
         
-        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15";
+        var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit="+seconds;
 
         var jsonPromise = $.getJSON(url);
         
@@ -525,7 +525,7 @@ function getPROC ()
 
 { 
 
-var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=150";
+var url="http://www.peoplesrepublicofcork.com/eventguide/mobile/apps/json_visitcork.php?limit=15&lastUpdate="+seconds;
 
 status_bar(1);
 
@@ -1030,7 +1030,7 @@ $("#showLastUpdateTable").click(function(){
 function onDeviceReady() {
     //alert("Device is Ready time = " +seconds);    
     
-    $("#myconsole").append("Device is Ready time = " +seconds);
+    $("#myconsole").append("Device is Ready. Device time = " +seconds + "("+datime+")");
 
      
 
