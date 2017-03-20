@@ -129,11 +129,11 @@ function updateLastUpdateTime()
         transaction.executeSql(executeQuery, [seconds, datime, one]
             , function(tx, result) {
                   
-                $("#myconsole").append('<p>Updated the last_update_table with '+ seconds +'</p>');
+                $("#myconsole").append('<p>Updated the last_update_table with '+ seconds +' ('+datime+')</p>');
                  dfrd5.resolve();
             },
             function(error){
-                 $("#myconsole").append('<p>Error occurred trying to update time: '+seconds+'</p>');
+                 $("#myconsole").append('<p>Error occurred trying to update time: '+seconds+'('+datime+')</p>');
                   dfrd5.resolve(); 
             });
             
