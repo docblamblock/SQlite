@@ -414,7 +414,7 @@ $("#myconsole").append("<p>Inside getLastUpdatetime()</p>");
                  
                  timeOfLastUpdate = results.rows.item(i).time_of_last_update; 
                                                               
-                 $("#myconsole").append("getLastUpdatetime loop: "+ results.rows.item(i).time_of_last_update + " (" ++ results.rows.item(i).time_formatted+ ")"); 
+                 $("#myconsole").append("getLastUpdatetime loop: "+ results.rows.item(i).time_of_last_update + " (" + results.rows.item(i).time_formatted+ ")"); 
                  
                   
                  }
