@@ -120,20 +120,24 @@ function updateLastUpdateTime()
  var dfrd5 = $.Deferred();
  var one = 1;  // time will be kept in the first row with id=1
 
+ var datime2;
+ 
+ datime2= "blah";
+
         // doing async stuff
         timeOfLastUpdate = seconds; 
      
         myDB.transaction(function(transaction) {
           var executeQuery = "UPDATE last_update_table set time_of_last_update=?, time_formatted=? where id=?";             
           //                  UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
-        transaction.executeSql(executeQuery, [seconds, datime, one]
+        transaction.executeSql(executeQuery, [seconds, datime2, one]
             , function(tx, result) {
                   
-                $("#myconsole").append('<p>Updated the last_update_table with '+ seconds +' ('+datime+')</p>');
+                $("#myconsole").append('<p>Updated the last_update_table with '+ seconds +' ('+datime2+')</p>');
                  dfrd5.resolve();
             },
             function(error){
-                 $("#myconsole").append('<p>Error occurred trying to update time: '+seconds+'('+datime+')</p>');
+                 $("#myconsole").append('<p>Error occurred trying to update time: '+seconds+'('+datime2+')</p>');
                   dfrd5.resolve(); 
             });
             
